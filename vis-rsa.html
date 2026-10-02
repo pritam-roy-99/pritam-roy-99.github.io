@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automated RSA — Cipher Visualizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0E14;
+    --panel: #121826;
+    --panel-2: #0F1420;
+    --border: #212A3B;
+    --text: #E7E9EE;
+    --muted: #7C8699;
+    --amber: #F0A94E;
+    --amber-dim: #7A5A2C;
+    --teal: #4FD8C4;
+    --teal-dim: #285E56;
+    --danger: #E85B5B;
+    --good: #63D48A;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% -10%, rgba(240,169,78,0.08), transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(79,216,196,0.08), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    padding: 28px 18px 60px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  .wrap{max-width:960px;margin:0 auto;}
+
+  /* ---- header ---- */
+  header{margin-bottom:28px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--teal); display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal);
+    box-shadow:0 0 0 3px rgba(79,216,196,0.15); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  h1{
+    font-family:var(--mono); font-weight:700; font-size:clamp(24px,4vw,34px);
+    margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  h1 span{color:var(--amber);}
+  .sub{color:var(--muted); font-size:14.5px; max-width:560px; line-height:1.5;}
+
+  /* ---- input row ---- */
+  .controls{
+    display:grid; grid-template-columns:1fr auto; gap:10px; margin:22px 0 30px;
+    align-items:start;
+  }
+  @media (max-width:640px){
+    .controls{grid-template-columns:1fr;}
+    button#run{width:100%;}
+  }
+  textarea#msg{
+    flex:1; min-width:220px; width:100%; min-height:110px; max-height:420px;
+    resize:vertical; overflow-y:auto;
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:13px 16px; color:var(--text); font-family:var(--mono); font-size:14.5px;
+    line-height:1.55; outline:none; transition:border-color .15s;
+  }
+  textarea#msg:focus{border-color:var(--teal);}
+  textarea#msg::placeholder{color:var(--muted);}
+  button#run, button#nextBtn{
+    background:var(--amber); color:#1a1206; border:none; border-radius:10px;
+    padding:13px 22px; font-family:var(--mono); font-weight:700; font-size:13.5px;
+    letter-spacing:.03em; cursor:pointer; transition:transform .12s, box-shadow .12s, opacity .12s;
+    text-transform:uppercase;
+  }
+  button#run:hover:not(:disabled), button#nextBtn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(240,169,78,.25);}
+  button#run:disabled{opacity:.45; cursor:not-allowed;}
+  .hint{width:100%; font-size:12px; color:var(--muted); margin-top:2px;}
+
+  /* ---- actors: alice / eve / bob ---- */
+  .actors{
+    display:flex; align-items:stretch; gap:12px; margin-bottom:22px;
+  }
+  @media (max-width:640px){.actors{flex-direction:column;}}
+  .actor{
+    flex:1; background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:16px; text-align:center; transition:border-color .3s, box-shadow .3s;
+  }
+  .actor .avatar{font-size:32px; margin-bottom:6px; line-height:1;}
+  .actor .name{font-family:var(--mono); font-weight:700; font-size:13.5px;}
+  .actor .role{font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:2px 0 10px;}
+  .actor .status{font-family:var(--mono); font-size:11.5px; color:var(--muted); min-height:32px;}
+  .actor.alice.active{border-color:var(--teal); box-shadow:0 0 0 3px rgba(79,216,196,.14);}
+  .actor.bob.active{border-color:var(--amber); box-shadow:0 0 0 3px rgba(240,169,78,.14);}
+  .actor.eve{border-style:dashed;}
+  .actor.eve.active{border-color:var(--danger); box-shadow:0 0 0 3px rgba(232,91,91,.14);}
+  .eve-log{
+    margin-top:10px; padding-top:10px; border-top:1px dashed var(--border);
+    font-family:var(--mono); font-size:10px; text-align:left; max-height:120px; overflow-y:auto;
+  }
+  .eve-log .line{color:var(--muted); margin-bottom:4px;}
+  .eve-log .line .sees{color:var(--text);}
+  .eve-log .line .cant{color:var(--danger); font-weight:700;}
+
+  /* next-step control */
+  .next-wrap{
+    display:none; align-items:center; gap:14px; margin: 4px 0 30px;
+  }
+  .next-wrap.show{display:flex;}
+  button#nextBtn{
+    background:var(--teal); box-shadow:none;
+  }
+  button#nextBtn:hover{box-shadow:0 6px 18px rgba(79,216,196,.25);}
+  .next-wrap .waiting-note{
+    font-family:var(--mono); font-size:12px; color:var(--muted);
+  }
+
+  /* ---- pipeline stepper ---- */
+  .pipeline{
+    display:flex; gap:4px; margin-bottom:26px; border:1px solid var(--border);
+    border-radius:12px; overflow:hidden; background:var(--panel-2);
+  }
+  .pipeline .step{
+    flex:1; text-align:center; padding:11px 4px; font-family:var(--mono); font-size:11.5px;
+    color:var(--muted); border-right:1px solid var(--border); letter-spacing:.03em;
+    transition:color .25s, background .25s;
+    position:relative;
+  }
+  .pipeline .step:last-child{border-right:none;}
+  .pipeline .step .n{display:block; font-size:9.5px; opacity:.6; margin-bottom:2px;}
+  .pipeline .step.active{color:var(--bg); background:var(--amber); font-weight:700;}
+  .pipeline .step.done{color:var(--teal);}
+
+  /* ---- stage panels ---- */
+  .stage{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:22px; margin-bottom:16px; display:none;
+    animation:fadeUp .45s ease;
+  }
+  .stage.visible{display:block;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .stage h2{
+    font-family:var(--mono); font-size:14px; margin:0 0 4px; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .stage h2 .tag{color:var(--amber); font-weight:700;}
+  .stage p.desc{color:var(--muted); font-size:13px; margin:0 0 18px; line-height:1.5;}
+
+  /* key forge */
+  .keygrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px;}
+  .keycell{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:14px;
+    opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s;
+  }
+  .keycell.show{opacity:1; transform:translateY(0);}
+  .keycell .lbl{font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px;}
+  .keycell .val{font-family:var(--mono); font-size:19px; font-weight:600; color:var(--amber); word-break:break-all;}
+  .keycell.cipher .val{color:var(--teal);}
+  .keycell .formula{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:5px;}
+
+  .keys-final{
+    margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  }
+  @media (max-width:520px){.keys-final{grid-template-columns:1fr;}}
+  .keybox{
+    border:1px dashed var(--border); border-radius:10px; padding:14px; font-family:var(--mono);
+  }
+  .keybox .k-lbl{font-size:11px; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:.06em;}
+  .keybox.pub .k-lbl{color:var(--amber);}
+  .keybox.priv .k-lbl{color:var(--teal);}
+  .keybox .k-val{font-size:15px;}
+
+  /* char grid (encode/encrypt/decrypt/decode) */
+  .chargrid{
+    display:flex; flex-wrap:wrap; gap:8px;
+  }
+  .cchip{
+    perspective:600px; width:78px;
+  }
+  .cchip-inner{
+    position:relative; width:100%; height:100px; transition:transform .5s;
+    transform-style:preserve-3d;
+  }
+  .cchip.flip .cchip-inner{transform:rotateY(180deg);}
+  .cface{
+    position:absolute; inset:0; backface-visibility:hidden; border-radius:9px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-family:var(--mono); border:1px solid var(--border); padding:4px; gap:2px;
+  }
+  .cface.front{background:var(--panel-2); color:var(--amber);}
+  .cface.back{background:#0e2321; color:var(--teal); transform:rotateY(180deg);}
+  .cface .big{font-size:20px; font-weight:700;}
+  .cface .small{font-size:9px; color:var(--muted); word-break:break-all; text-align:center;}
+  .cface .ch{font-size:11px; color:var(--text); margin-bottom:2px;}
+
+  .decode-row{
+    display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-family:var(--mono);
+  }
+  .decode-char{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:8px;
+    padding:10px 12px; font-size:16px; font-weight:600; color:var(--text);
+    opacity:0; transform:scale(.7); transition:opacity .3s, transform .3s;
+  }
+  .decode-char.show{opacity:1; transform:scale(1);}
+
+  .verify{
+    margin-top:18px; border-radius:10px; padding:16px 18px; font-family:var(--mono);
+    display:flex; align-items:center; gap:12px; opacity:0; transition:opacity .5s;
+  }
+  .verify.show{opacity:1;}
+  .verify.ok{background:rgba(99,212,138,.08); border:1px solid rgba(99,212,138,.35); color:var(--good);}
+  .verify .icon{font-size:20px;}
+  .verify .txt{font-size:13.5px;}
+  .verify .txt b{color:var(--text); white-space:pre-wrap; word-break:break-word;}
+  .actor .status{word-break:break-word;}
+
+  .live-note{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-top:14px; min-height:16px;}
+
+  footer{margin-top:30px; text-align:center; color:var(--muted); font-size:11.5px; font-family:var(--mono);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">public-key cryptography · step-by-step</div>
+    <h1>Fully Automated <span>RSA</span></h1>
+    <p class="sub">Type a short message, then click through each stage at your own pace — fresh prime numbers, a fresh key pair, and every block encrypted and decrypted, one click at a time.</p>
+  </header>
+
+  <div class="controls">
+    <textarea id="msg" rows="5" placeholder="Type or paste a paragraph of any length…">Hello RSA</textarea>
+    <button id="run">Run cipher</button>
+    <div class="hint">
+      <span id="msgCount">0 characters</span> · No character limit; long messages are processed one character at a time in your browser.
+    </div>
+  </div>
+
+  <div class="actors" id="actors">
+    <div class="actor alice" data-actor="alice">
+      <div class="avatar">👩‍💻</div>
+      <div class="name">Alice</div>
+      <div class="role">Sender</div>
+      <div class="status" id="aliceStatus">Waiting to send a message…</div>
+    </div>
+    <div class="actor eve" data-actor="eve">
+      <div class="avatar">🕵️‍♀️</div>
+      <div class="name">Eve</div>
+      <div class="role">Eavesdropper — on the wire</div>
+      <div class="status" id="eveStatus">Watching the channel…</div>
+      <div class="eve-log" id="eveLog"></div>
+    </div>
+    <div class="actor bob" data-actor="bob">
+      <div class="avatar">🧑‍💻</div>
+      <div class="name">Bob</div>
+      <div class="role">Receiver</div>
+      <div class="status" id="bobStatus">Waiting to generate keys…</div>
+    </div>
+  </div>
+
+  <div class="next-wrap" id="nextWrap">
+    <button id="nextBtn">Continue →</button>
+    <div class="waiting-note">waiting for you — click to advance to the next stage</div>
+  </div>
+
+  <div class="pipeline" id="pipeline">
+    <div class="step" data-stage="1"><span class="n">01</span>Generate Keys</div>
+    <div class="step" data-stage="2"><span class="n">02</span>Encode</div>
+    <div class="step" data-stage="3"><span class="n">03</span>Encrypt</div>
+    <div class="step" data-stage="4"><span class="n">04</span>Decrypt</div>
+    <div class="step" data-stage="5"><span class="n">05</span>Decode &amp; Verify</div>
+  </div>
+
+  <!-- STAGE 1: KEYS -->
+  <section class="stage" id="stage1">
+    <h2><span class="tag">01</span> Generating the key pair</h2>
+    <p class="desc">Two random primes p and q are drawn, multiplied into a modulus N, and used to derive a public exponent e and its private inverse d.</p>
+    <div class="keygrid" id="keygrid"></div>
+    <div class="keys-final">
+      <div class="keybox pub"><div class="k-lbl">Public key (N, e)</div><div class="k-val" id="pubkey">—</div></div>
+      <div class="keybox priv"><div class="k-lbl">Private key (N, d)</div><div class="k-val" id="privkey">—</div></div>
+    </div>
+    <div class="live-note" id="keynote"></div>
+  </section>
+
+  <!-- STAGE 2: ENCODE -->
+  <section class="stage" id="stage2">
+    <h2><span class="tag">02</span> Encoding to numbers</h2>
+    <p class="desc">Each character becomes an ASCII code, then an 8-bit binary string — the plaintext block RSA will actually operate on.</p>
+    <div class="chargrid" id="encodeGrid"></div>
+  </section>
+
+  <!-- STAGE 3: ENCRYPT -->
+  <section class="stage" id="stage3">
+    <h2><span class="tag">03</span> Encrypting each block</h2>
+    <p class="desc">Every block m is raised to the power e, modulo N — turning plaintext numbers into ciphertext numbers no one can reverse without d.</p>
+    <div class="chargrid" id="encryptGrid"></div>
+  </section>
+
+  <!-- STAGE 4: DECRYPT -->
+  <section class="stage" id="stage4">
+    <h2><span class="tag">04</span> Decrypting each block</h2>
+    <p class="desc">Using the private exponent d, each ciphertext block is raised to the power d, modulo N — recovering the original plaintext number.</p>
+    <div class="chargrid" id="decryptGrid"></div>
+  </section>
+
+  <!-- STAGE 5: DECODE -->
+  <section class="stage" id="stage5">
+    <h2><span class="tag">05</span> Decoding &amp; verifying</h2>
+    <p class="desc">Recovered numbers are converted back to binary, then back to characters — reassembling the original sentence.</p>
+    <div class="decode-row" id="decodeRow"></div>
+    <div class="verify ok" id="verifyBox">
+      <div class="icon">✓</div>
+      <div class="txt">Decrypted message matches the original exactly: <b id="verifyText"></b></div>
+    </div>
+  </section>
+
+  <footer>modular exponentiation, computed live in your browser via BigInt</footer>
+</div>
+
+<script>
+// ---------------------------------------------------------------
+// RSA MATH (BigInt) — mirrors the reference algorithm
+// ---------------------------------------------------------------
+function randomBits(bits){
+  let n = 0n;
+  for(let i=0;i<bits;i++){
+    n = (n<<1n) | BigInt(Math.random() < 0.5 ? 0 : 1);
+  }
+  return n;
+}
+function randomOddOfBitLength(bits){
+  let n = randomBits(bits-2);
+  n = (1n<<BigInt(bits-1)) | (n<<1n) | 1n; // set top bit + force odd
+  return n;
+}
+function isPrimeBig(n){
+  if(n < 2n) return false;
+  if(n === 2n || n === 3n) return true;
+  if(n % 2n === 0n) return false;
+  let d = 3n;
+  while(d*d <= n){
+    if(n % d === 0n) return false;
+    d += 2n;
+  }
+  return true;
+}
+function genPrime(bits){
+  while(true){
+    const c = randomOddOfBitLength(bits);
+    if(isPrimeBig(c)) return c;
+  }
+}
+function gcdBig(a,b){ while(b){ [a,b] = [b, a % b]; } return a; }
+function extGcd(a,b){
+  if(b === 0n) return [a, 1n, 0n];
+  const [g,x1,y1] = extGcd(b, a % b);
+  return [g, y1, x1 - (a/b)*y1];
+}
+function modInverse(a,m){
+  const [g,x] = extGcd(a,m);
+  if(g !== 1n) throw new Error("no inverse");
+  return ((x % m) + m) % m;
+}
+function modPow(base, exp, mod){
+  base = base % mod;
+  let result = 1n;
+  while(exp > 0n){
+    if(exp & 1n) result = (result * base) % mod;
+    exp >>= 1n;
+    base = (base * base) % mod;
+  }
+  return result;
+}
+function chooseE(phi){
+  while(true){
+    let e = randomBits(20) % (phi - 2n) + 2n;
+    if(e % 2n === 0n) e += 1n;
+    if(e > 1n && e < phi && gcdBig(e, phi) === 1n) return e;
+  }
+}
+
+// ---------------------------------------------------------------
+// UI HELPERS
+// ---------------------------------------------------------------
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const $ = id => document.getElementById(id);
+
+function escapeHTML(value){
+  return String(value)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function displayChar(ch){
+  if(ch === ' ') return '␣';
+  if(ch === '\n') return '↵';
+  if(ch === '\r') return '↵';
+  if(ch === '\t') return '⇥';
+  return ch;
+}
+
+function setStage(n){
+  document.querySelectorAll('.pipeline .step').forEach(el=>{
+    const s = Number(el.dataset.stage);
+    el.classList.toggle('active', s===n);
+    el.classList.toggle('done', s<n);
+  });
+}
+function showPanel(id){ $(id).classList.add('visible'); }
+function resetAll(){
+  ['stage1','stage2','stage3','stage4','stage5'].forEach(id=>$(id).classList.remove('visible'));
+  $('keygrid').innerHTML=''; $('encodeGrid').innerHTML=''; $('encryptGrid').innerHTML='';
+  $('decryptGrid').innerHTML=''; $('decodeRow').innerHTML='';
+  $('pubkey').textContent='—'; $('privkey').textContent='—'; $('keynote').textContent='';
+  $('verifyBox').classList.remove('show');
+  $('nextWrap').classList.remove('show');
+  $('eveLog').innerHTML='';
+  setStatus('aliceStatus','Waiting to send a message…');
+  setStatus('bobStatus','Waiting to generate keys…');
+  setStatus('eveStatus','Watching the channel…');
+  setActive();
+  setStage(0);
+}
+
+// highlight whichever actors are "active" right now (pass no args to clear)
+function setActive(...ids){
+  document.querySelectorAll('.actor').forEach(el=>{
+    el.classList.toggle('active', ids.includes(el.dataset.actor));
+  });
+}
+function setStatus(id, text){ $(id).textContent = text; }
+
+// animated "ticking" number reveal, then settle on final value
+async function tickInto(el, finalText, ticks=8, delay=35){
+  const digits = "0123456789";
+  for(let i=0;i<ticks;i++){
+    let junk='';
+    for(let j=0;j<Math.min(finalText.length,6);j++) junk += digits[Math.floor(Math.random()*10)];
+    el.textContent = junk;
+    await sleep(delay);
+  }
+  el.textContent = finalText;
+}
+
+function addKeyCell(label, formula, cipher=false){
+  const cell = document.createElement('div');
+  cell.className = 'keycell' + (cipher?' cipher':'');
+  cell.innerHTML = `<div class="lbl">${label}</div><div class="val">…</div><div class="formula">${formula||''}</div>`;
+  $('keygrid').appendChild(cell);
+  return cell.querySelector('.val');
+}
+
+// Pauses the whole pipeline until the user clicks the "Continue" button.
+function waitForNext(label){
+  const wrap = $('nextWrap');
+  const btn = $('nextBtn');
+  btn.textContent = label || 'Continue →';
+  wrap.classList.add('show');
+  return new Promise(resolve=>{
+    btn.onclick = () => {
+      wrap.classList.remove('show');
+      resolve();
+    };
+  });
+}
+
+// ---------------------------------------------------------------
+// STAGE FUNCTIONS — each does its animation, then waits for a click
+// ---------------------------------------------------------------
+async function stageKeys(){
+  setStage(1); showPanel('stage1');
+  setActive('bob');
+  setStatus('bobStatus','Generating a fresh key pair…');
+  await sleep(150);
+
+  const pCell = addKeyCell('Prime p', 'random, ~10 bits'); document.querySelectorAll('.keycell')[0].classList.add('show');
+  const pVal = genPrime(10);
+  await tickInto(pCell, pVal.toString());
+
+  const qCell = addKeyCell('Prime q', 'random, different from p'); document.querySelectorAll('.keycell')[1].classList.add('show');
+  let qVal = genPrime(10);
+  while(qVal === pVal) qVal = genPrime(10);
+  await tickInto(qCell, qVal.toString());
+
+  const N = pVal * qVal;
+  const nCell = addKeyCell('Modulus N', 'N = p × q'); document.querySelectorAll('.keycell')[2].classList.add('show');
+  await tickInto(nCell, N.toString());
+
+  const phi = (pVal-1n)*(qVal-1n);
+  const phiCell = addKeyCell('Totient φ(N)', 'φ(N) = (p−1)(q−1)'); document.querySelectorAll('.keycell')[3].classList.add('show');
+  await tickInto(phiCell, phi.toString());
+
+  const eCell = addKeyCell('Public exponent e', 'gcd(e, φ(N)) = 1', true); document.querySelectorAll('.keycell')[4].classList.add('show');
+  const e = chooseE(phi);
+  await tickInto(eCell, e.toString());
+
+  const dCell = addKeyCell('Private exponent d', 'e·d ≡ 1 (mod φ(N))', true); document.querySelectorAll('.keycell')[5].classList.add('show');
+  const d = modInverse(e, phi);
+  await tickInto(dCell, d.toString());
+
+  $('pubkey').textContent = `(${N}, ${e})`;
+  $('privkey').textContent = `(${N}, ${d})`;
+  $('keynote').textContent = `verified: (e × d) mod φ(N) = ${(e*d)%phi}  →  key pair is valid`;
+  setStatus('bobStatus','Public key (N, e) sent to Alice. Private key d stays secret with Bob.');
+
+  await waitForNext('Continue to Encoding →');
+  return {N, e, d};
+}
+
+async function stageEncode(message){
+  setStage(2); showPanel('stage2');
+  setActive('alice');
+  setStatus('aliceStatus','Encoding her message into ASCII → binary…');
+  const chars = message.split('');
+  const encodeGrid = $('encodeGrid');
+  for(const ch of chars){
+    const code = ch.charCodeAt(0);
+    const bin = code.toString(2).padStart(8,'0');
+
+    // chip starts with just the character — decimal and binary fill in live
+    const chip = document.createElement('div');
+    chip.className = 'cchip';
+    chip.innerHTML = `<div class="cchip-inner"><div class="cface front">
+      <div class="ch">'${escapeHTML(displayChar(ch))}'</div>
+      <div class="big">—</div>
+      <div class="small">ASCII → binary</div>
+    </div></div>`;
+    encodeGrid.appendChild(chip);
+    chip.style.opacity=0; chip.style.transform='translateY(6px)';
+    chip.style.transition='opacity .3s, transform .3s';
+    await sleep(90);
+    chip.style.opacity=1; chip.style.transform='translateY(0)';
+
+    const bigEl = chip.querySelector('.big');
+    const smallEl = chip.querySelector('.small');
+
+    // step 1: tick the decimal ASCII code into place
+    await tickInto(bigEl, code.toString(), 6, 30);
+    await sleep(150);
+
+    // step 2: build the 8-bit binary string one bit at a time (decimal -> binary)
+    smallEl.textContent = '';
+    let cur = '';
+    for(const bit of bin){
+      cur += bit;
+      smallEl.textContent = cur;
+      await sleep(70);
+    }
+    await sleep(120);
+  }
+
+  setStatus('aliceStatus',"Message encoded. Ready to encrypt with Bob's public key.");
+  await waitForNext('Continue to Encryption →');
+  return chars;
+}
+
+async function stageEncrypt(chars, N, e){
+  setStage(3); showPanel('stage3');
+  setActive('alice','eve');
+  setStatus('aliceStatus',"Encrypting each block with Bob's public key (N, e)…");
+  setStatus('eveStatus','Intercepting the channel — capturing every ciphertext block.');
+  $('eveLog').innerHTML='';
+  const encryptGrid = $('encryptGrid');
+  const blocks = []; // {ch, m, c}
+  for(const ch of chars){
+    const m = BigInt(ch.charCodeAt(0));
+    const chip = document.createElement('div');
+    chip.className = 'cchip';
+    chip.innerHTML = `<div class="cchip-inner">
+      <div class="cface front"><div class="ch">'${escapeHTML(displayChar(ch))}'</div><div class="big">${m}</div><div class="small">m^e mod N</div></div>
+      <div class="cface back"><div class="big">…</div><div class="small">ciphertext</div></div>
+    </div>`;
+    encryptGrid.appendChild(chip);
+    await sleep(70);
+  }
+  const encChips = encryptGrid.querySelectorAll('.cchip');
+  for(let i=0;i<chars.length;i++){
+    const m = BigInt(chars[i].charCodeAt(0));
+    const c = modPow(m, e, N);
+    blocks.push({ch:chars[i], m, c});
+    const back = encChips[i].querySelector('.cface.back');
+    back.querySelector('.big').textContent = c.toString();
+    encChips[i].classList.add('flip');
+
+    const logLine = document.createElement('div');
+    logLine.className = 'line';
+    logLine.innerHTML = `block ${i+1}: <span class="sees">${c}</span> · plaintext: <span class="cant">?????</span>`;
+    $('eveLog').appendChild(logLine);
+    $('eveLog').scrollTop = $('eveLog').scrollHeight;
+
+    await sleep(160);
+  }
+
+  setStatus('aliceStatus','All blocks encrypted and sent to Bob.');
+  setStatus('eveStatus', `Captured ${chars.length} ciphertext block(s). Without d, they're just numbers.`);
+  await waitForNext('Continue to Decryption →');
+  return blocks;
+}
+
+async function stageDecrypt(blocks, N, d){
+  setStage(4); showPanel('stage4');
+  setActive('bob');
+  setStatus('bobStatus','Decrypting each block with his private key d…');
+  const decryptGrid = $('decryptGrid');
+  for(const b of blocks){
+    const chip = document.createElement('div');
+    chip.className = 'cchip';
+    chip.innerHTML = `<div class="cchip-inner">
+      <div class="cface front" style="color:var(--teal);"><div class="ch">cipher</div><div class="big">${b.c}</div><div class="small">c^d mod N</div></div>
+      <div class="cface back"><div class="big">…</div><div class="small">recovered m</div></div>
+    </div>`;
+    decryptGrid.appendChild(chip);
+    await sleep(70);
+  }
+  const decChips = decryptGrid.querySelectorAll('.cchip');
+  const recoveredChars = [];
+  for(let i=0;i<blocks.length;i++){
+    const m2 = modPow(blocks[i].c, d, N);
+    recoveredChars.push(String.fromCharCode(Number(m2)));
+    const back = decChips[i].querySelector('.cface.back');
+    back.querySelector('.big').textContent = m2.toString();
+    back.querySelector('.small').textContent = `'${displayChar(recoveredChars[i])}'`;
+    decChips[i].classList.add('flip');
+    await sleep(160);
+  }
+
+  setStatus('bobStatus','All blocks decrypted back into plaintext numbers.');
+  await waitForNext('Continue to Decode & Verify →');
+  return recoveredChars;
+}
+
+async function stageDecodeVerify(recoveredChars, message){
+  setStage(5); showPanel('stage5');
+  setActive('bob');
+  setStatus('bobStatus','Decoding numbers back into characters…');
+  const decodeRow = $('decodeRow');
+  for(const ch of recoveredChars){
+    const box = document.createElement('div');
+    box.className = 'decode-char';
+    box.textContent = displayChar(ch);
+    decodeRow.appendChild(box);
+    await sleep(60);
+    box.classList.add('show');
+  }
+  await sleep(300);
+
+  const recovered = recoveredChars.join('');
+  const ok = recovered === message;
+  const box = $('verifyBox');
+  box.classList.toggle('ok', ok);
+  box.classList.add('show');
+  if(!ok){
+    box.style.background='rgba(232,91,91,.08)';
+    box.style.borderColor='rgba(232,91,91,.35)';
+    box.style.color='var(--danger)';
+    box.querySelector('.icon').textContent='✗';
+  } else {
+    box.style.background=''; box.style.borderColor=''; box.style.color='';
+    box.querySelector('.icon').textContent='✓';
+  }
+  $('verifyText').textContent = `"${message}" → "${recovered}"`;
+
+  setActive('alice','bob');
+  setStatus('aliceStatus', `Sent: "${message}"`);
+  setStatus('bobStatus', ok ? `Received: "${recovered}" ✓ matches` : 'Received message did not match!');
+  setStatus('eveStatus', `Still has only ciphertext numbers — never saw "${message}".`);
+}
+
+// ---------------------------------------------------------------
+// MAIN SEQUENCE — runs one stage, then waits for the user's click
+// ---------------------------------------------------------------
+async function runCipher(){
+  const btn = $('run');
+  btn.disabled = true;
+  resetAll();
+
+  const message = $('msg').value || 'Hello RSA';
+
+  const {N, e, d} = await stageKeys();
+  const chars = await stageEncode(message);
+  const blocks = await stageEncrypt(chars, N, e);
+  const recoveredChars = await stageDecrypt(blocks, N, d);
+  await stageDecodeVerify(recoveredChars, message);
+
+  btn.disabled = false;
+}
+
+$('run').addEventListener('click', ()=>{ runCipher(); });
+
+const msgBox = $('msg');
+const msgCount = $('msgCount');
+
+function updateMessageUI(){
+  const n = msgBox.value.length;
+  msgCount.textContent = `${n.toLocaleString()} character${n === 1 ? '' : 's'}`;
+
+  // Grow with the paragraph while keeping a sensible maximum height.
+  msgBox.style.height = 'auto';
+  msgBox.style.height = Math.min(Math.max(msgBox.scrollHeight, 110), 420) + 'px';
+}
+
+msgBox.addEventListener('input', updateMessageUI);
+window.addEventListener('load', ()=>{
+  updateMessageUI();
+});
+</script>
+</body>
+</html>

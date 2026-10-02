@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DI-QKD — Collective Attack Visualizer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0E14;
+    --panel: #121826;
+    --panel-2: #0F1420;
+    --border: #212A3B;
+    --text: #E7E9EE;
+    --muted: #7C8699;
+    --teal: #4FD8C4;
+    --teal-dim: #285E56;
+    --amber: #F0A94E;
+    --amber-dim: #7A5A2C;
+    --violet: #9C8CF5;
+    --violet-dim: #4B4380;
+    --danger: #E85B5B;
+    --good: #63D48A;
+    --blue: #6FA8F5;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 12% -10%, rgba(156,140,245,0.09), transparent 40%),
+      radial-gradient(circle at 92% 8%, rgba(79,216,196,0.08), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    min-height:100vh;
+    padding: 28px 18px 60px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  .wrap{max-width:1020px;margin:0 auto;}
+
+  header{margin-bottom:24px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--violet); display:flex; align-items:center; gap:8px; margin-bottom:10px;
+  }
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--violet);
+    box-shadow:0 0 0 3px rgba(156,140,245,0.18); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+  h1{
+    font-family:var(--mono); font-weight:700; font-size:clamp(22px,4vw,32px);
+    margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  h1 span{color:var(--violet);}
+  .sub{color:var(--muted); font-size:14.5px; max-width:700px; line-height:1.55;}
+
+  .legend{
+    display:flex; flex-wrap:wrap; gap:14px; margin:16px 0 10px; padding:12px 16px;
+    background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+  }
+  .legend-item{display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11.5px; color:var(--muted);}
+  .legend-item b{color:var(--text); font-weight:600;}
+  .legend-note{
+    font-family:var(--mono); font-size:11.5px; color:var(--muted); margin:0 0 10px; line-height:1.65;
+    padding:10px 14px; border-left:2px solid var(--violet-dim);
+  }
+  .legend-note b{color:var(--text);}
+  .refline{
+    font-family:var(--mono); font-size:11px; color:var(--muted); margin:0 0 26px;
+    display:flex; gap:18px; flex-wrap:wrap; padding:10px 14px;
+    background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+  }
+  .refline b{color:var(--text);}
+  .refline .di{color:var(--blue);}
+  .refline .dd{color:var(--good);}
+
+  .controls{
+    display:flex; gap:14px; margin:0 0 30px; flex-wrap:wrap; align-items:center;
+  }
+  .field{display:flex; flex-direction:column; gap:6px;}
+  .field label{font-family:var(--mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  input#numPairs{
+    width:90px;
+    background:var(--panel); border:1px solid var(--border); border-radius:10px;
+    padding:11px 14px; color:var(--text); font-family:var(--mono); font-size:14.5px;
+    outline:none; transition:border-color .15s;
+  }
+  input#numPairs:focus{border-color:var(--violet);}
+  .slider-wrap{
+    display:flex; flex-direction:column; gap:6px; background:var(--panel); border:1px solid var(--border);
+    border-radius:10px; padding:9px 16px; min-width:200px;
+  }
+  .slider-wrap .row{display:flex; justify-content:space-between; align-items:baseline;}
+  .slider-wrap label{font-family:var(--mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .slider-wrap .vv{font-family:var(--mono); font-size:13px; color:var(--teal); font-weight:700;}
+  input#visSlider{width:100%; accent-color:var(--violet); cursor:pointer;}
+  .switch-wrap{
+    display:flex; align-items:center; gap:10px; cursor:pointer; user-select:none;
+    background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:11px 16px;
+  }
+  .switch-wrap input{position:absolute; opacity:0; width:0; height:0;}
+  .switch{
+    position:relative; width:38px; height:22px; background:var(--panel-2); border:1px solid var(--border);
+    border-radius:12px; transition:background .2s, border-color .2s; flex-shrink:0;
+  }
+  .switch::after{
+    content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%;
+    background:var(--muted); transition:transform .2s, background .2s;
+  }
+  .switch-wrap input:checked + .switch{background:rgba(232,91,91,.15); border-color:var(--danger);}
+  .switch-wrap input:checked + .switch::after{transform:translateX(16px); background:var(--danger);}
+  .switch-label{font-family:var(--mono); font-size:13px; color:var(--text);}
+  button#run, button#nextBtn{
+    background:var(--violet); color:#140F26; border:none; border-radius:10px;
+    padding:13px 22px; font-family:var(--mono); font-weight:700; font-size:13.5px;
+    letter-spacing:.03em; cursor:pointer; transition:transform .12s, box-shadow .12s, opacity .12s;
+    text-transform:uppercase;
+  }
+  button#run:hover:not(:disabled), button#nextBtn:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(156,140,245,.25);}
+  button#run:disabled{opacity:.45; cursor:not-allowed;}
+  .hint{width:100%; font-size:12px; color:var(--muted); margin-top:2px;}
+
+  /* ---- actors + channel ---- */
+  .actors{
+    display:flex; align-items:stretch; gap:12px; margin-bottom:0; position:relative;
+  }
+  @media (max-width:640px){.actors{flex-direction:column;}}
+  .actor{
+    flex:1; background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:16px; text-align:center; transition:border-color .3s, box-shadow .3s;
+  }
+  .actor .avatar{font-size:32px; margin-bottom:6px; line-height:1;}
+  .actor .name{font-family:var(--mono); font-weight:700; font-size:13.5px;}
+  .actor .trust{
+    display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:.05em;
+    text-transform:uppercase; padding:2px 7px; border-radius:5px; margin:3px 0 6px;
+    color:var(--danger); background:rgba(232,91,91,.10); border:1px solid rgba(232,91,91,.32);
+  }
+  .actor .role{font-family:var(--mono); font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; margin:2px 0 10px;}
+  .actor .status{font-family:var(--mono); font-size:11.5px; color:var(--muted); min-height:32px;}
+  .actor.alice.active{border-color:var(--danger); box-shadow:0 0 0 3px rgba(232,91,91,.14);}
+  .actor.bob.active{border-color:var(--amber); box-shadow:0 0 0 3px rgba(240,169,78,.14);}
+  .actor.source{border-style:dashed;}
+  .actor.source.active{border-color:var(--blue); box-shadow:0 0 0 3px rgba(111,168,245,.14);}
+  .actor.source.compromised{border-color:var(--danger); box-shadow:0 0 0 3px rgba(232,91,91,.14);}
+  .eve-log{
+    margin-top:10px; padding-top:10px; border-top:1px dashed var(--border);
+    font-family:var(--mono); font-size:10px; text-align:left; max-height:120px; overflow-y:auto;
+  }
+
+  .channel-track{
+    position:relative; height:4px; margin: -1px 0 22px; background:var(--border); border-radius:2px;
+  }
+  .photon-dot{
+    position:absolute; top:-6px; width:16px; height:16px; border-radius:50%;
+    box-shadow:0 0 10px 2px rgba(156,140,245,.65);
+    transition:left .42s ease, background .2s, box-shadow .2s; opacity:0;
+  }
+  .photon-dot.toAlice{left:50%; background:var(--danger); box-shadow:0 0 10px 2px rgba(232,91,91,.65);}
+  .photon-dot.toBob{left:50%; background:var(--amber); box-shadow:0 0 10px 2px rgba(240,169,78,.65);}
+  .photon-dot.show{opacity:1;}
+  .photon-dot.fake{background:var(--violet); box-shadow:0 0 10px 2px rgba(156,140,245,.65);}
+
+  .next-wrap{ display:none; align-items:center; gap:14px; margin: 4px 0 30px; }
+  .next-wrap.show{display:flex;}
+  button#nextBtn{ background:var(--teal); color:#0A1F1B; box-shadow:none; }
+  button#nextBtn:hover{box-shadow:0 6px 18px rgba(79,216,196,.25);}
+  .next-wrap .waiting-note{ font-family:var(--mono); font-size:12px; color:var(--muted); }
+
+  .pipeline{
+    display:flex; gap:4px; margin-bottom:26px; border:1px solid var(--border);
+    border-radius:12px; overflow:hidden; background:var(--panel-2);
+  }
+  .pipeline .step{
+    flex:1; text-align:center; padding:11px 4px; font-family:var(--mono); font-size:11px;
+    color:var(--muted); border-right:1px solid var(--border); letter-spacing:.02em;
+    transition:color .25s, background .25s;
+  }
+  .pipeline .step:last-child{border-right:none;}
+  .pipeline .step .n{display:block; font-size:9.5px; opacity:.6; margin-bottom:2px;}
+  .pipeline .step.active{color:var(--bg); background:var(--violet); font-weight:700;}
+  .pipeline .step.done{color:var(--teal);}
+
+  .stage{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:22px; margin-bottom:16px; display:none;
+    animation:fadeUp .45s ease;
+  }
+  .stage.visible{display:block;}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
+  .stage h2{
+    font-family:var(--mono); font-size:14px; margin:0 0 4px; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .stage h2 .tag{color:var(--violet); font-weight:700;}
+  .stage p.desc{color:var(--muted); font-size:13px; margin:0 0 18px; line-height:1.5;}
+  .stage h3.sub-h{font-family:var(--mono); font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin:14px 0 8px;}
+
+  .chargrid{display:flex; flex-wrap:wrap; gap:8px;}
+  .qchip{width:84px;}
+  .qface{
+    border-radius:9px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-family:var(--mono); border:1px solid var(--border); padding:6px 4px; gap:2px;
+    background:var(--panel-2); position:relative; height:100px;
+  }
+  .qface .idx{font-size:9px; color:var(--muted); position:absolute; top:5px; left:7px;}
+  .qface .big{font-size:15px; font-weight:700; color:var(--text);}
+  .qface .small{font-size:9px; color:var(--muted); text-align:center;}
+  .qface .basis-tag{font-size:10px; font-weight:700; margin-top:2px;}
+  .qface .basis-tag.alice-c{color:var(--danger);}
+  .qface .basis-tag.bob-c{color:var(--amber);}
+
+  .pair-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .pair-item{
+    width:178px; padding:9px 8px; border-radius:9px; border:1px solid var(--border);
+    background:var(--panel-2); text-align:left; font-family:var(--mono); font-size:10.5px;
+    opacity:0; transform:translateY(6px); transition:opacity .35s, transform .35s, border-color .3s, background .3s;
+  }
+  .pair-item.show{opacity:1; transform:translateY(0);}
+  .pair-item .idx{font-size:9px; color:var(--muted); margin-bottom:4px;}
+  .pair-item .row{display:flex; justify-content:space-between; margin:2px 0;}
+  .pair-item .row .who{color:var(--muted);}
+  .pair-item .row .valv{color:var(--text);}
+  .pair-item .verdict{margin-top:6px; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; text-align:center; padding:3px 0; border-radius:5px;}
+  .pair-item.key{border-color:var(--good); background:rgba(99,212,138,.08);}
+  .pair-item.key .verdict{color:var(--good); background:rgba(99,212,138,.12);}
+  .pair-item.test{border-color:var(--blue); background:rgba(111,168,245,.08);}
+  .pair-item.test .verdict{color:var(--blue); background:rgba(111,168,245,.12);}
+  .pair-item.discard{opacity:.35;}
+  .pair-item.discard .verdict{color:var(--muted); background:rgba(124,134,153,.08);}
+
+  .chsh-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin:14px 0 18px;}
+  .chsh-cell{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:10px; padding:12px 14px;
+    font-family:var(--mono);
+  }
+  .chsh-cell .lbl{font-size:10.5px; color:var(--muted); margin-bottom:6px;}
+  .chsh-cell .val{font-size:18px; font-weight:700; color:var(--text);}
+  .chsh-cell .n{font-size:9.5px; color:var(--muted); margin-top:3px;}
+
+  .s-box{
+    display:flex; align-items:center; gap:26px; flex-wrap:wrap; margin:16px 0;
+    padding:18px; background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+  }
+  .s-stat{font-family:var(--mono);}
+  .s-stat .lbl{font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px;}
+  .s-stat .val{font-size:26px; font-weight:700;}
+  .s-stat .val.ok{color:var(--good);}
+  .s-stat .val.bad{color:var(--danger);}
+  .s-scale{
+    position:relative; height:10px; background:linear-gradient(to right, var(--danger) 0 50%, var(--good) 50% 100%);
+    border-radius:5px; margin:14px 0 6px;
+  }
+  .s-scale .mark{position:absolute; top:-16px; transform:translateX(-50%); font-size:9.5px; font-family:var(--mono); color:var(--muted); text-align:center; width:60px;}
+  .s-scale .needle{position:absolute; top:-4px; width:3px; height:18px; background:var(--text); border-radius:2px; transform:translateX(-50%); transition:left .5s ease;}
+
+  .bitcheck-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .bit-pill{
+    padding:9px 12px; border-radius:8px; border:1px solid var(--border); background:var(--panel-2);
+    font-family:var(--mono); font-size:12px; text-align:center; min-width:52px;
+    opacity:0; transform:scale(.85); transition:opacity .3s, transform .3s;
+  }
+  .bit-pill.show{opacity:1; transform:scale(1);}
+  .bit-pill .lbl{font-size:8.5px; color:var(--muted); display:block; margin-bottom:3px;}
+  .bit-pill.match{border-color:var(--good);}
+  .bit-pill.mismatch{border-color:var(--danger); background:rgba(232,91,91,.08);}
+
+  .qber-box{
+    display:flex; align-items:center; gap:22px; flex-wrap:wrap; margin:16px 0;
+    padding:16px 18px; background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+  }
+  .qber-stat{font-family:var(--mono);}
+  .qber-stat .lbl{font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px;}
+  .qber-stat .val{font-size:22px; font-weight:700;}
+  .qber-stat .val.ok{color:var(--good);}
+  .qber-stat .val.bad{color:var(--danger);}
+
+  .rate-box{
+    margin:16px 0; padding:16px 18px; background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+    font-family:var(--mono);
+  }
+  .rate-box .formula{color:var(--muted); font-size:11px; margin-bottom:10px; line-height:1.6;}
+  .rate-box .formula b{color:var(--text);}
+  .rate-box .split{display:flex; gap:28px; flex-wrap:wrap;}
+  .rate-box .result{display:flex; align-items:baseline; gap:10px;}
+  .rate-box .result .lbl{font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em;}
+  .rate-box .result .val{font-size:24px; font-weight:700;}
+  .rate-box .result .val.ok{color:var(--good);}
+  .rate-box .result .val.bad{color:var(--danger);}
+  .rate-box .result .val.ref{color:var(--muted);}
+
+  .keyfinal{
+    font-family:var(--mono); font-size:15px; word-break:break-all; padding:14px 16px;
+    background:var(--panel-2); border:1px dashed var(--border); border-radius:10px; color:var(--violet);
+    letter-spacing:.06em;
+  }
+
+  .verify{
+    margin-top:18px; border-radius:10px; padding:16px 18px; font-family:var(--mono);
+    display:flex; align-items:center; gap:12px; opacity:0; transition:opacity .5s;
+  }
+  .verify.show{opacity:1;}
+  .verify.ok{background:rgba(99,212,138,.08); border:1px solid rgba(99,212,138,.35); color:var(--good);}
+  .verify.bad{background:rgba(232,91,91,.08); border:1px solid rgba(232,91,91,.35); color:var(--danger);}
+  .verify .icon{font-size:20px;}
+  .verify .txt{font-size:13.5px; line-height:1.5;}
+  .verify .txt b{color:var(--text);}
+
+  .live-note{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-top:14px; min-height:16px;}
+  footer{margin-top:30px; text-align:center; color:var(--muted); font-size:11.5px; font-family:var(--mono);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">fully device-independent QKD · collective attacks · step-by-step</div>
+    <h1>DI-QKD <span>Collective-Attack Visualizer</span></h1>
+    <p class="sub">A source distributes entangled pairs; <b style="color:var(--text)">neither</b> Alice's nor Bob's measurement device is trusted — both are treated as black boxes, possibly built by Eve herself. Alice picks between three inputs A₀,A₁,A₂; Bob between two, B₁,B₂. The raw key comes from the (A₀,B₁) rounds; the (A₁,A₂)×(B₁,B₂) rounds are disclosed to compute the <b style="color:var(--text)">CHSH value S</b>. Security follows from S alone — no assumption is made about what's inside either box.</p>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><b>Alice's inputs</b>&nbsp; A₀ (key), A₁, A₂ (test)</div>
+    <div class="legend-item"><b>Bob's inputs</b>&nbsp; B₁ (key+test), B₂ (test)</div>
+    <div class="legend-item"><b style="color:var(--good)">■</b> key round: (A₀,B₁)</div>
+    <div class="legend-item"><b style="color:var(--blue)">■</b> CHSH test: (A₁,B₁),(A₁,B₂),(A₂,B₁),(A₂,B₂)</div>
+  </div>
+  <p class="legend-note">Source state: ρ<sub>ν</sub> = ν|Φ⁺⟩⟨Φ⁺| + (1−ν)𝕀/4, measured with B₁=σz, B₂=σx, A₀=σz, A₁=(σz+σx)/√2, A₂=(σz−σx)/√2 — the explicit qubit realization the paper studies for illustration, though the security bound itself assumes nothing about the devices. QBER Q=(1−ν)/2 from the (A₀,B₁) rounds; CHSH value S=2√2ν from the four test combinations, <b>S = ⟨A₁B₁⟩+⟨A₁B₂⟩+⟨A₂B₁⟩−⟨A₂B₂⟩</b>. Eve's Holevo information is bounded by <b>χ(B₁:E) ≤ h((1+√((S/2)²−1))/2)</b> — independent of Q — giving the device-independent Devetak–Winter rate r ≥ 1−h(Q)−χ(B₁:E).</p>
+  <div class="refline">
+    <span>Critical QBER thresholds (Acín, Brunner, Gisin, Massar, Pironio &amp; Scarani, 2007):</span>
+    <span class="di"><b>device-independent</b> Qc = 7.1%</span>
+    <span class="dd"><b>usual (device-dependent) scenario</b> Qc = 11%</span>
+  </div>
+
+  <div class="controls">
+    <div class="field">
+      <label>Number of rounds</label>
+      <input id="numPairs" type="number" min="20" max="60" value="36">
+    </div>
+    <div class="slider-wrap">
+      <div class="row"><label>Source visibility ν</label><span class="vv" id="visVal">0.95</span></div>
+      <input id="visSlider" type="range" min="0.75" max="1.00" step="0.01" value="0.95">
+    </div>
+    <label class="switch-wrap" for="eveToggle">
+      <input id="eveToggle" type="checkbox">
+      <span class="switch"></span>
+      <span class="switch-label">Eve built the devices</span>
+    </label>
+    <button id="run">Run protocol</button>
+    <div class="hint">Runs live via Math.random() — nothing is sent anywhere. With Eve on, both boxes and the source are hers: the effective visibility is forced to ν=0.55, well below the 7.1% QBER threshold, so the CHSH bound alone catches her regardless of what's actually inside the devices.</div>
+  </div>
+
+  <div class="actors" id="actors">
+    <div class="actor alice" data-actor="alice">
+      <div class="avatar">📦</div>
+      <div class="name">Alice</div>
+      <div class="trust">untrusted box</div>
+      <div class="role">Inputs A₀,A₁,A₂</div>
+      <div class="status" id="aliceStatus">Waiting for entangled pairs…</div>
+    </div>
+    <div class="actor source" data-actor="source">
+      <div class="avatar" id="sourceAvatar">💫</div>
+      <div class="name" id="sourceName">Source</div>
+      <div class="role" id="sourceRole">Emits ρ<sub>ν</sub> = ν|Φ⁺⟩⟨Φ⁺| + (1−ν)𝕀/4</div>
+      <div class="status" id="sourceStatus">Idle.</div>
+      <div class="eve-log" id="eveLog"></div>
+    </div>
+    <div class="actor bob" data-actor="bob">
+      <div class="avatar">📦</div>
+      <div class="name">Bob</div>
+      <div class="trust">untrusted box</div>
+      <div class="role">Inputs B₁,B₂</div>
+      <div class="status" id="bobStatus">Waiting for entangled pairs…</div>
+    </div>
+  </div>
+  <div class="channel-track" id="channelTrack">
+    <div class="photon-dot toAlice" id="photonDotA"></div>
+    <div class="photon-dot toBob" id="photonDotB"></div>
+  </div>
+
+  <div class="next-wrap" id="nextWrap">
+    <button id="nextBtn">Continue →</button>
+    <div class="waiting-note">waiting for you — click to advance to the next stage</div>
+  </div>
+
+  <div class="pipeline" id="pipeline">
+    <div class="step" data-stage="1"><span class="n">01</span>Emit ρᵥ</div>
+    <div class="step" data-stage="2"><span class="n">02</span>Transmit</div>
+    <div class="step" data-stage="3"><span class="n">03</span>Measure</div>
+    <div class="step" data-stage="4"><span class="n">04</span>Sift &amp; Classify</div>
+    <div class="step" data-stage="5"><span class="n">05</span>CHSH Test &amp; Key</div>
+  </div>
+
+  <!-- STAGE 1: EMIT -->
+  <section class="stage" id="stage1">
+    <h2><span class="tag">01</span> The source emits ρ<sub>ν</sub></h2>
+    <p class="desc" id="stage1desc">Each round, the source produces a two-qubit state ρ<sub>ν</sub> = ν|Φ⁺⟩⟨Φ⁺| + (1−ν)𝕀/4. Neither box is assumed to know or report what it actually receives.</p>
+    <div class="chargrid" id="prepareGrid"></div>
+  </section>
+
+  <!-- STAGE 2: TRANSMIT -->
+  <section class="stage" id="stage2">
+    <h2><span class="tag">02</span> One qubit flies to each black box</h2>
+    <p class="desc" id="stage2desc">Watch the pair split and travel to each party.</p>
+  </section>
+
+  <!-- STAGE 3: MEASURE -->
+  <section class="stage" id="stage3">
+    <h2><span class="tag">03</span> Alice and Bob each feed their box a random input</h2>
+    <p class="desc">Every round, Alice's box gets a random input x∈{A₀,A₁,A₂} and Bob's box gets a random input y∈{B₁,B₂}, chosen freely and kept secret from Eve until the outcomes are already fixed. Each box just returns ±1 — no assumption is made about its internals.</p>
+    <h3 class="sub-h">Alice's outcomes</h3>
+    <div class="chargrid" id="measureGridA"></div>
+    <h3 class="sub-h">Bob's outcomes</h3>
+    <div class="chargrid" id="measureGridB"></div>
+  </section>
+
+  <!-- STAGE 4: SIFT -->
+  <section class="stage" id="stage4">
+    <h2><span class="tag">04</span> Public announcement of inputs &amp; classification</h2>
+    <p class="desc">Alice and Bob publicly announce only <b style="color:var(--text)">which input they used</b> each round — never the outcome. (A₀,B₁) rounds become <b style="color:var(--good)">key</b> bits (kept secret); the four (A₁,A₂)×(B₁,B₂) combinations become <b style="color:var(--blue)">CHSH test</b> rounds; (A₀,B₂) rounds carry no information for either purpose and are discarded.</p>
+    <div class="pair-row" id="pairRow"></div>
+  </section>
+
+  <!-- STAGE 5: CHSH TEST + KEY -->
+  <section class="stage" id="stage5">
+    <h2><span class="tag">05</span> CHSH test &amp; key extraction</h2>
+    <p class="desc">The four test-round correlations combine into the CHSH value S. This is the device-independent security check: it doesn't matter what's inside either box, only whether the observed statistics could be explained by any local hidden-variable model.</p>
+    <div class="chsh-grid" id="chshGrid"></div>
+    <div class="s-box">
+      <div class="s-stat"><div class="lbl">CHSH value S</div><div class="val" id="sValue">—</div></div>
+      <div class="s-stat"><div class="lbl">Classical bound</div><div class="val">S ≤ 2</div></div>
+      <div class="s-stat"><div class="lbl">Tsirelson bound</div><div class="val">S ≤ 2√2 ≈ 2.828</div></div>
+    </div>
+    <div class="s-scale" id="sScale">
+      <div class="mark" style="left:0%">0</div>
+      <div class="mark" style="left:70.7%">2 (classical)</div>
+      <div class="mark" style="left:100%">2√2 (quantum)</div>
+      <div class="needle" id="sNeedle" style="left:0%"></div>
+    </div>
+
+    <h3 class="sub-h">Sifted key rounds (A₀,B₁)</h3>
+    <div class="bitcheck-row" id="bitcheckRow"></div>
+    <div class="qber-box" id="qberBox">
+      <div class="qber-stat"><div class="lbl">Key rounds</div><div class="val" id="keyCount">—</div></div>
+      <div class="qber-stat"><div class="lbl">Mismatches</div><div class="val" id="keyErrors">—</div></div>
+      <div class="qber-stat"><div class="lbl">QBER (Q)</div><div class="val" id="keyErrRate">—</div></div>
+      <div class="qber-stat"><div class="lbl">Critical QBER</div><div class="val">7.1%</div></div>
+    </div>
+
+    <h3 class="sub-h">Devetak–Winter key rate: device-independent vs. usual scenario</h3>
+    <div class="rate-box">
+      <div class="formula">Device-independent: <b>r ≥ 1 − h(Q) − h((1+√((S/2)²−1))/2)</b>, using only the observed (Q,S) — no trust in the devices.<br>Usual scenario (same correlations, but Alice &amp; Bob trust their qubit apparatus): <b>r ≥ 1 − h(Q) − h(Q + S/2√2)</b> [Eq. 8].</div>
+      <div class="split">
+        <div class="result"><span class="lbl">r (device-independent) ≥</span><span class="val" id="rateValueDI">—</span></div>
+        <div class="result"><span class="lbl">r (usual scenario) ≥</span><span class="val ref" id="rateValueUsual">—</span></div>
+      </div>
+    </div>
+
+    <div class="live-note" id="keynote">Alice's bit at every key round (Bob's outcome agrees under the noiseless model) becomes the final secret key:</div>
+    <div class="keyfinal" id="keyfinal">—</div>
+    <div class="verify ok" id="verifyBox">
+      <div class="icon">✓</div>
+      <div class="txt" id="verifyText"></div>
+    </div>
+  </section>
+
+  <footer>Device-independent QKD against collective attacks (Ac\u00edn, Brunner, Gisin, Massar, Pironio &amp; Scarani, arXiv:quant-ph/0702152) — simulated with plain randomness, computed live in your browser</footer>
+</div>
+
+<script>
+// ---------------------------------------------------------------
+// DI-QKD / CHSH COLLECTIVE-ATTACK SIMULATION (depolarized |Phi+>)
+// ---------------------------------------------------------------
+const A_LABELS = ['A\u2080(\u03c3z)','A\u2081((\u03c3z+\u03c3x)/\u221a2)','A\u2082((\u03c3z\u2212\u03c3x)/\u221a2)'];
+const B_LABELS = ['B\u2081(\u03c3z)','B\u2082(\u03c3x)'];
+// Ideal (nu=1) correlators <A_i x B_j> for the qubit realization used in the paper.
+// rows: A0,A1,A2 ; cols: B1,B2
+const IDEAL_E = [
+  [1, 0],                 // A0,B1 (key basis) ; A0,B2 (unused/discarded)
+  [1/Math.SQRT2, 1/Math.SQRT2],   // A1,B1 ; A1,B2
+  [1/Math.SQRT2, -1/Math.SQRT2],  // A2,B1 ; A2,B2
+];
+
+function randIdxA(){ return Math.floor(Math.random()*3); } // 0,1,2 -> A0,A1,A2
+function randIdxB(){ return Math.floor(Math.random()*2); } // 0,1   -> B1,B2
+function pm1(){ return Math.random() < 0.5 ? 1 : -1; }
+
+function measurePair(ai, bi, nu){
+  const E = nu * IDEAL_E[ai][bi];
+  const A = pm1();
+  const pSame = (1+E)/2;
+  const B = (Math.random() < pSame) ? A : -A;
+  return {A, B};
+}
+
+function h(x){
+  if(x<=0 || x>=1) return 0;
+  return -x*Math.log2(x) - (1-x)*Math.log2(1-x);
+}
+function rateDI(Q, S){
+  const inner = Math.max(0, (S/2)*(S/2) - 1);
+  const chi = h((1 + Math.sqrt(inner))/2);
+  return 1 - h(Q) - chi;
+}
+function rateUsual(Q, S){
+  const arg = Math.min(1, Math.max(0, Q + S/(2*Math.SQRT2)));
+  return 1 - h(Q) - h(arg);
+}
+
+// ---------------------------------------------------------------
+// UI HELPERS
+// ---------------------------------------------------------------
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const $ = id => document.getElementById(id);
+
+function setStage(n){
+  document.querySelectorAll('.pipeline .step').forEach(el=>{
+    const s = Number(el.dataset.stage);
+    el.classList.toggle('active', s===n);
+    el.classList.toggle('done', s<n);
+  });
+}
+function showPanel(id){ $(id).classList.add('visible'); }
+function resetAll(){
+  ['stage1','stage2','stage3','stage4','stage5'].forEach(id=>$(id).classList.remove('visible'));
+  $('prepareGrid').innerHTML=''; $('measureGridA').innerHTML=''; $('measureGridB').innerHTML='';
+  $('pairRow').innerHTML=''; $('bitcheckRow').innerHTML=''; $('chshGrid').innerHTML='';
+  $('sValue').textContent='—'; $('sValue').className='val';
+  $('sNeedle').style.left='0%';
+  $('keyCount').textContent='—'; $('keyErrors').textContent='—'; $('keyErrRate').textContent='—';
+  $('keyErrRate').className='val'; $('keyfinal').textContent='—';
+  $('rateValueDI').textContent='—'; $('rateValueDI').className='val';
+  $('rateValueUsual').textContent='—'; $('rateValueUsual').className='val ref';
+  $('verifyBox').classList.remove('show');
+  $('nextWrap').classList.remove('show');
+  $('eveLog').innerHTML='';
+  $('photonDotA').classList.remove('show','fake');
+  $('photonDotB').classList.remove('show','fake');
+  setStatus('aliceStatus','Waiting for entangled pairs…');
+  setStatus('bobStatus','Waiting for entangled pairs…');
+  const eveOn = $('eveToggle').checked;
+  const src = $('actors').querySelector('.source');
+  src.classList.toggle('compromised', eveOn);
+  $('sourceAvatar').textContent = eveOn ? '🕵️‍♀️' : '💫';
+  $('sourceName').textContent = eveOn ? 'Eve (as Source)' : 'Source';
+  $('sourceRole').innerHTML = eveOn ? 'Also built both boxes; forcing \u03bd \u2192 0.55' : 'Emits \u03c1<sub>\u03bd</sub> = \u03bd|\u03a6\u207a\u27e9\u27e8\u03a6\u207a| + (1\u2212\u03bd)\ud835\udd4a/4';
+  setStatus('sourceStatus', eveOn ? 'Injecting extra depolarizing noise…' : 'Idle.');
+  $('visSlider').disabled = eveOn;
+  setActive();
+  setStage(0);
+}
+function setActive(...ids){
+  document.querySelectorAll('.actor').forEach(el=>{
+    el.classList.toggle('active', ids.includes(el.dataset.actor));
+  });
+}
+function setStatus(id, text){ $(id).textContent = text; }
+
+async function tickInto(el, finalText, ticks=6, delay=30, chars="01"){
+  for(let i=0;i<ticks;i++){
+    el.textContent = chars[Math.floor(Math.random()*chars.length)];
+    await sleep(delay);
+  }
+  el.textContent = finalText;
+}
+
+function waitForNext(label){
+  const wrap = $('nextWrap');
+  const btn = $('nextBtn');
+  btn.textContent = label || 'Continue →';
+  wrap.classList.add('show');
+  return new Promise(resolve=>{
+    btn.onclick = () => { wrap.classList.remove('show'); resolve(); };
+  });
+}
+
+async function movePair(faked){
+  const dotA = $('photonDotA');
+  const dotB = $('photonDotB');
+  [dotA, dotB].forEach(d=>{
+    d.classList.remove('fake');
+    d.style.transition='none'; d.style.left='50%'; d.classList.add('show');
+  });
+  void dotA.offsetHeight;
+  dotA.style.transition='left .42s ease, background .2s, box-shadow .2s';
+  dotB.style.transition='left .42s ease, background .2s, box-shadow .2s';
+  if(faked){ dotA.classList.add('fake'); dotB.classList.add('fake'); }
+  await sleep(20);
+  dotA.style.left='1%';
+  dotB.style.left='99%';
+  await sleep(460);
+  dotA.classList.remove('show');
+  dotB.classList.remove('show');
+}
+
+// ---------------------------------------------------------------
+// STAGE 1 — EMIT
+// ---------------------------------------------------------------
+async function stagePrepare(n, eveOn, nu){
+  setStage(1); showPanel('stage1');
+  setActive('source');
+  $('stage1desc').innerHTML = eveOn
+    ? `Eve controls the source (and both boxes). Every round is forced down to \u03bd \u2248 ${nu.toFixed(2)} \u2014 modeled as extra depolarizing noise, exactly the correlations the security bound is derived to catch.`
+    : `Each round, the source produces \u03c1<sub>\u03bd</sub> = \u03bd|\u03a6\u207a\u27e9\u27e8\u03a6\u207a| + (1\u2212\u03bd)\ud835\udd4a/4 at \u03bd = ${nu.toFixed(2)}. Neither box is assumed to know or report what it actually receives.`;
+  setStatus('sourceStatus', `Generating ${n} round(s)…`);
+  const grid = $('prepareGrid');
+  for(let i=0;i<n;i++){
+    const chip = document.createElement('div');
+    chip.className = 'qchip';
+    chip.innerHTML = `<div class="qface">
+      <span class="idx">${i+1}</span>
+      <div class="big" style="font-size:20px;">${eveOn ? '\u2622' : '\u03c1\u03bd'}</div>
+      <div class="small">${eveOn ? 'degraded pair' : 'noisy \u03a6\u207a'}</div>
+      <div class="basis-tag" style="color:${eveOn?'#E85B5B':'#9C8CF5'}">\u03bd=${nu.toFixed(2)}</div>
+    </div>`;
+    grid.appendChild(chip);
+    chip.style.opacity=0; chip.style.transform='translateY(6px)';
+    chip.style.transition='opacity .3s, transform .3s';
+    await sleep(35);
+    chip.style.opacity=1; chip.style.transform='translateY(0)';
+  }
+  setStatus('sourceStatus', `${n} round(s) ready. Sending qubits out…`);
+  await waitForNext('Continue to Transmit →');
+}
+
+// ---------------------------------------------------------------
+// STAGE 2 — TRANSMIT
+// ---------------------------------------------------------------
+async function stageTransmit(n, eveOn){
+  setStage(2); showPanel('stage2');
+  setActive('source','alice','bob');
+  $('stage2desc').textContent = eveOn
+    ? 'Eve sends her degraded pairs onward, one qubit to each black box \u2014 indistinguishable in transit from a clean pair.'
+    : 'The two qubits of each pair fly apart, one to Alice\u2019s black box and one to Bob\u2019s black box.';
+  setStatus('aliceStatus', 'Receiving qubits…');
+  setStatus('bobStatus', 'Receiving qubits…');
+  for(let i=0;i<Math.min(n, 14); i++){
+    await movePair(eveOn);
+    await sleep(30);
+  }
+  if(n > 14){ await sleep(120); }
+  setStatus('sourceStatus', `All ${n} round(s) sent.`);
+  setStatus('aliceStatus', 'All qubits received, ready to measure.');
+  setStatus('bobStatus', 'All qubits received, ready to measure.');
+  await waitForNext('Continue to Measurement →');
+}
+
+// ---------------------------------------------------------------
+// STAGE 3 — MEASURE
+// ---------------------------------------------------------------
+async function stageMeasure(n, aIdx, bIdx, outcomesA, outcomesB){
+  setStage(3); showPanel('stage3');
+  setActive('alice','bob');
+  setStatus('aliceStatus', 'Black box fed a random input, returns \u00b11…');
+  setStatus('bobStatus', 'Black box fed a random input, returns \u00b11…');
+
+  const gridA = $('measureGridA');
+  const gridB = $('measureGridB');
+  for(let i=0;i<n;i++){
+    const chipA = document.createElement('div');
+    chipA.className = 'qchip';
+    chipA.innerHTML = `<div class="qface">
+      <span class="idx">${i+1}</span><div class="small">input</div><div class="basis-tag alice-c">${A_LABELS[aIdx[i]]}</div>
+      <div class="small" style="margin-top:4px;">output</div><div class="big" id="rA${i}">…</div>
+    </div>`;
+    gridA.appendChild(chipA);
+
+    const chipB = document.createElement('div');
+    chipB.className = 'qchip';
+    chipB.innerHTML = `<div class="qface">
+      <span class="idx">${i+1}</span><div class="small">input</div><div class="basis-tag bob-c">${B_LABELS[bIdx[i]]}</div>
+      <div class="small" style="margin-top:4px;">output</div><div class="big" id="rB${i}">…</div>
+    </div>`;
+    gridB.appendChild(chipB);
+
+    chipA.style.opacity=0; chipB.style.opacity=0;
+    chipA.style.transform='translateY(6px)'; chipB.style.transform='translateY(6px)';
+    chipA.style.transition='opacity .3s, transform .3s'; chipB.style.transition='opacity .3s, transform .3s';
+    await sleep(30);
+    chipA.style.opacity=1; chipB.style.opacity=1;
+    chipA.style.transform='translateY(0)'; chipB.style.transform='translateY(0)';
+  }
+  for(let i=0;i<n;i++){
+    await tickInto($(`rA${i}`), outcomesA[i]===1?'+1':'\u22121', 4, 22, '+\u22121');
+    await tickInto($(`rB${i}`), outcomesB[i]===1?'+1':'\u22121', 4, 22, '+\u22121');
+  }
+  setStatus('aliceStatus', 'All rounds measured. Announcing inputs used…');
+  setStatus('bobStatus', 'All rounds measured. Announcing inputs used…');
+  await waitForNext('Continue to Sifting →');
+}
+
+// ---------------------------------------------------------------
+// STAGE 4 — SIFT & CLASSIFY
+// ---------------------------------------------------------------
+function classify(ai, bi){
+  if(ai===0 && bi===0) return 'key';      // A0,B1
+  if(ai===0 && bi===1) return 'discard';  // A0,B2
+  return 'test';                          // A1/A2 with B1/B2
+}
+async function stageSift(n, aIdx, bIdx, roleOf){
+  setStage(4); showPanel('stage4');
+  setActive('alice','bob');
+  setStatus('aliceStatus', 'Publicly announcing input choices…');
+  setStatus('bobStatus', 'Publicly announcing input choices…');
+  const row = $('pairRow');
+  let keyCount=0, testCount=0, discardCount=0;
+  for(let i=0;i<n;i++){
+    const role = roleOf[i];
+    const item = document.createElement('div');
+    item.className = 'pair-item';
+    item.innerHTML = `<div class="idx">round ${i+1}</div>
+      <div class="row"><span class="who">Alice</span><span class="valv">${A_LABELS[aIdx[i]]}</span></div>
+      <div class="row"><span class="who">Bob</span><span class="valv">${B_LABELS[bIdx[i]]}</span></div>
+      <div class="verdict">…</div>`;
+    row.appendChild(item);
+    await sleep(22);
+    item.classList.add('show');
+    await sleep(30);
+    const verdict = item.querySelector('.verdict');
+    if(role==='key'){ item.classList.add('key'); verdict.textContent='key bit'; keyCount++; }
+    else if(role==='test'){ item.classList.add('test'); verdict.textContent='CHSH test'; testCount++; }
+    else { item.classList.add('discard'); verdict.textContent='discarded'; discardCount++; }
+    await sleep(24);
+  }
+  setStatus('aliceStatus', `${keyCount} key round(s), ${testCount} CHSH-test round(s), ${discardCount} discarded.`);
+  setStatus('bobStatus', `${keyCount} key round(s), ${testCount} CHSH-test round(s), ${discardCount} discarded.`);
+  await waitForNext('Continue to CHSH Test & Key →');
+}
+
+// ---------------------------------------------------------------
+// STAGE 5 — CHSH TEST + KEY
+// ---------------------------------------------------------------
+async function stageBellAndKey(n, aIdx, bIdx, outcomesA, outcomesB, roleOf){
+  setStage(5); showPanel('stage5');
+  setActive('alice','bob');
+  setStatus('aliceStatus', 'Computing correlations for the CHSH test…');
+  setStatus('bobStatus', 'Computing correlations for the CHSH test…');
+
+  const combos = [
+    {ai:1, bi:0, sign:1,  label:'E(A\u2081,B\u2081)'},
+    {ai:1, bi:1, sign:1,  label:'E(A\u2081,B\u2082)'},
+    {ai:2, bi:0, sign:1,  label:'E(A\u2082,B\u2081)'},
+    {ai:2, bi:1, sign:-1, label:'E(A\u2082,B\u2082)'},
+  ];
+  const chshGrid = $('chshGrid');
+  let S = 0;
+  for(const c of combos){
+    let sum=0, count=0;
+    for(let i=0;i<n;i++){
+      if(aIdx[i]===c.ai && bIdx[i]===c.bi){
+        sum += outcomesA[i]*outcomesB[i];
+        count++;
+      }
+    }
+    const E = count ? sum/count : 0;
+    S += c.sign * E;
+    const cell = document.createElement('div');
+    cell.className = 'chsh-cell';
+    cell.innerHTML = `<div class="lbl">${c.label}</div><div class="val">…</div><div class="n">n = ${count}</div>`;
+    chshGrid.appendChild(cell);
+    await sleep(120);
+    await tickInto(cell.querySelector('.val'), E.toFixed(3), 6, 24, '+-0123456789.');
+  }
+
+  await sleep(200);
+  const absS = Math.abs(S);
+  await tickInto($('sValue'), S.toFixed(3), 10, 30, '+-0123456789.');
+  const secureBell = absS > 2.05; // small margin above the strict classical bound for finite-sample noise
+  $('sValue').classList.add(secureBell ? 'ok' : 'bad');
+  const needlePct = Math.max(0, Math.min(100, (absS/2.8284)*100));
+  $('sNeedle').style.left = needlePct + '%';
+
+  // Key extraction (A0,B1 rounds)
+  const keyIdx = [];
+  for(let i=0;i<n;i++){ if(roleOf[i]==='key') keyIdx.push(i); }
+  const row = $('bitcheckRow');
+  let mismatches = 0;
+  const aliceBits = [];
+  for(const i of keyIdx){
+    const aliceBit = outcomesA[i]===1 ? 0 : 1;
+    const bobBit = outcomesB[i]===1 ? 0 : 1; // agrees with Alice under the noiseless model
+    const match = aliceBit === bobBit;
+    if(!match) mismatches++;
+    aliceBits.push(aliceBit);
+    const pill = document.createElement('div');
+    pill.className = 'bit-pill';
+    pill.innerHTML = `<span class="lbl">r${i+1}</span>${aliceBit} / ${bobBit}`;
+    row.appendChild(pill);
+    await sleep(45);
+    pill.classList.add('show', match ? 'match' : 'mismatch');
+  }
+
+  await sleep(150);
+  await tickInto($('keyCount'), String(keyIdx.length), 5, 22);
+  await sleep(90);
+  await tickInto($('keyErrors'), String(mismatches), 5, 22);
+  await sleep(90);
+  const Q = keyIdx.length ? mismatches/keyIdx.length : 0;
+  const errPct = (Q*100).toFixed(1)+'%';
+  await tickInto($('keyErrRate'), errPct, 6, 24);
+  $('keyErrRate').classList.add(Q <= 0.071 ? 'ok' : 'bad');
+
+  await sleep(150);
+  const rDI = keyIdx.length ? rateDI(Q, absS) : -1;
+  const rUsual = keyIdx.length ? rateUsual(Q, absS) : -1;
+  await tickInto($('rateValueDI'), rDI.toFixed(4), 8, 26, '-0123456789.');
+  $('rateValueDI').classList.add(rDI > 0 ? 'ok' : 'bad');
+  await sleep(90);
+  await tickInto($('rateValueUsual'), rUsual.toFixed(4), 8, 26, '-0123456789.');
+
+  const secure = secureBell && rDI > 0 && keyIdx.length>0;
+  const finalKey = secure ? aliceBits.join('') : '';
+
+  await sleep(200);
+  if(secure){
+    $('keynote').textContent = `${keyIdx.length} key round(s) accepted. Alice's bit at each becomes the final secret key:`;
+    $('keyfinal').textContent = finalKey || '(empty — try more rounds)';
+  } else if(keyIdx.length===0){
+    $('keynote').textContent = 'No (A\u2080,B\u2081) rounds landed this run — try more rounds.';
+    $('keyfinal').textContent = '\u2205 no key rounds';
+  } else {
+    $('keynote').textContent = 'Security check failed \u2014 key discarded, not used:';
+    $('keyfinal').textContent = '\u2205 aborted — no key extracted';
+  }
+
+  const box = $('verifyBox');
+  box.classList.remove('ok','bad');
+  box.classList.add(secure ? 'ok' : 'bad', 'show');
+  box.querySelector('.icon').textContent = secure ? '✓' : '✗';
+  if(secure){
+    $('verifyText').innerHTML = `S = <b>${absS.toFixed(3)}</b> clears the classical bound of 2 (no local hidden-variable model could produce this, whatever the boxes actually are), QBER is <b>${errPct}</b>, and the device-independent bound gives r \u2265 <b>${rDI.toFixed(4)}</b> &gt; 0 (compare the usual-scenario bound of ${rUsual.toFixed(4)}, which trusts the qubit apparatus). Alice and Bob accept a <b>${finalKey.length}-bit</b> device-independently secure key.`;
+  } else if(keyIdx.length>0){
+    $('verifyText').innerHTML = !secureBell
+      ? `S = <b>${absS.toFixed(3)}</b> does not clear the classical bound of 2 \u2014 the observed statistics are consistent with a local hidden-variable model, so no security is certified regardless of the ${errPct} QBER.`
+      : `The device-independent bound r \u2265 <b>${rDI.toFixed(4)}</b> is not positive at QBER = <b>${errPct}</b>, even though S = <b>${absS.toFixed(3)}</b> cleared the classical bound. Alice and Bob abort and try again over a fresh channel.`;
+  } else {
+    $('verifyText').innerHTML = `No key rounds were available to check this run.`;
+  }
+
+  setStatus('aliceStatus', secure ? 'Key established.' : 'Key discarded.');
+  setStatus('bobStatus', secure ? 'Key established.' : 'Key discarded.');
+}
+
+// ---------------------------------------------------------------
+// MAIN SEQUENCE
+// ---------------------------------------------------------------
+async function runProtocol(){
+  const btn = $('run');
+  btn.disabled = true;
+  resetAll();
+
+  let n = parseInt($('numPairs').value, 10);
+  if(!Number.isFinite(n) || n < 20) n = 20;
+  if(n > 60) n = 60;
+  $('numPairs').value = n;
+  const eveOn = $('eveToggle').checked;
+  const nu = eveOn ? 0.55 : parseFloat($('visSlider').value);
+
+  const aIdx = Array.from({length:n}, randIdxA);
+  const bIdx = Array.from({length:n}, randIdxB);
+
+  const outcomesA = new Array(n), outcomesB = new Array(n);
+  for(let i=0;i<n;i++){
+    const {A,B} = measurePair(aIdx[i], bIdx[i], nu);
+    outcomesA[i]=A; outcomesB[i]=B;
+  }
+  const roleOf = aIdx.map((ai,i)=>classify(ai, bIdx[i]));
+
+  await stagePrepare(n, eveOn, nu);
+  await stageTransmit(n, eveOn);
+  await stageMeasure(n, aIdx, bIdx, outcomesA, outcomesB);
+  await stageSift(n, aIdx, bIdx, roleOf);
+  await stageBellAndKey(n, aIdx, bIdx, outcomesA, outcomesB, roleOf);
+
+  btn.disabled = false;
+}
+
+$('run').addEventListener('click', ()=>{ runProtocol(); });
+$('visSlider').addEventListener('input', ()=>{ $('visVal').textContent = parseFloat($('visSlider').value).toFixed(2); });
+$('eveToggle').addEventListener('change', ()=>{
+  const eveOn = $('eveToggle').checked;
+  const src = $('actors').querySelector('.source');
+  src.classList.toggle('compromised', eveOn);
+  $('sourceAvatar').textContent = eveOn ? '🕵️‍♀️' : '💫';
+  $('sourceName').textContent = eveOn ? 'Eve (as Source)' : 'Source';
+  $('sourceRole').innerHTML = eveOn ? 'Also built both boxes; forcing \u03bd \u2192 0.55' : 'Emits \u03c1<sub>\u03bd</sub> = \u03bd|\u03a6\u207a\u27e9\u27e8\u03a6\u207a| + (1\u2212\u03bd)\ud835\udd4a/4';
+  setStatus('sourceStatus', eveOn ? 'Ready to inject extra depolarizing noise…' : 'Idle.');
+  $('visSlider').disabled = eveOn;
+});
+window.addEventListener('load', ()=>{ /* wait for the user to press Run protocol */ });
+</script>
+</body>
+</html>
