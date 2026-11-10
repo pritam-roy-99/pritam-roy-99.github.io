@@ -15,12 +15,12 @@ This project lives in its own folder inside the existing GitHub Pages repository
 
 ## Google Sheet connection (admin-managed)
 
-1. Create a new spreadsheet using https://sheets.new; name it **SNB Mess Omelet Orders**.
+1. Open the **existing prepared spreadsheet**: https://docs.google.com/spreadsheets/d/1YwUd53BxyUKeq25dtAlVp51MJq-Sb71gIiPhGPqe-Rc/edit . Its **Orders**, **Monthly Summary** and **Settings** tabs are already created, with the billing formulas in place. Do not create another spreadsheet.
 2. Open **Extensions > Apps Script**.
 3. Replace the default `Code.gs` with the full `Code.gs` file in this directory.
 4. Click **Save**, choose `setup`, and click **Run**. Authorize access to this spreadsheet.
 5. In Apps Script, open **Execution log** for that `setup()` run and copy the **PRIVATE SYNC KEY**. Do **not** publish this value in GitHub or screenshots.
-6. In the Google Sheet, confirm the **Orders**, **Monthly Summary**, and **Settings** tabs. Set `Settings!B2` to the default rupees-per-omelet rate. Optional month-specific rates go in `Settings!A6:B` (for example `2026-11`, `15`).
+6. In the existing Sheet, set `Settings!B2` to the default rupees-per-omelet rate. Optional month-specific rates go in `Settings!A6:B` (for example `2026-11`, `15`). Monthly Summary formulas were installed already; the backend does not overwrite them.
 7. In Apps Script: **Deploy > New deployment > Web app**, **Execute as: Me**, **Who has access: Anyone**. Copy the deployment's `/exec` URL. This public endpoint is protected by the shared key, not a member login. Use only with the mess administrator's approval.
 8. Open the GitHub Pages website above. Select **Google Sheet Sync** and enter the `/exec` URL and PRIVATE SYNC KEY, then click **Sync pending edits and retrieve records**.
 9. Check the Google Sheet **Orders** tab and monthly summary. After a successful sync, the app will mark matching orders **Synced**.
