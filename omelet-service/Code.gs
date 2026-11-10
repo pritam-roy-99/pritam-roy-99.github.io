@@ -50,19 +50,16 @@ function read_(){
  return s.getRange(2,1,last-1,8).getValues().filter(r=>r[0]).map(r=>({id:String(r[0]),date:String(r[1]),meal:String(r[3]),serial:String(r[4]),count:Number(r[5]),status:String(r[6]),updated:String(r[7])}));
 }
 function sortSerial_(a,b){return String(a).localeCompare(String(b),undefined,{numeric:true,sensitivity:'base'})}
+/**
+ * Monthly Summary is now formula-driven directly in the Google Sheet.
+ * Do not rewrite its cells: doing so destroys the spill formulas in A2 and E2:G2.
+ * Changes to the Orders or Settings tabs automatically recalculate in Sheets.
+ */
 function rebuild_(){
- const {summary,settings}=ensure_(),data=read_(),rates={},rateDefault=settings.getRange('B2').getValue();
- const n=settings.getLastRow();if(n>=6)for(const row of settings.getRange(6,1,n-5,2).getValues()){if(row[0]!==''&&row[1]!==''&&/^\d{4}-(0[1-9]|1[0-2])$/.test(String(row[0])))rates[String(row[0])]=Number(row[1])}
- const map=new Map();
- for(const o of data){if(o.status!=='Active')continue;let month=o.date.slice(0,7),key=month+'|'+o.serial;let x=map.get(key)||{month,serial:o.serial,lunch:0,dinner:0};x[o.meal==='Lunch'?'lunch':'dinner']+=o.count;map.set(key,x)}
- const result=[...map.values()].sort((a,b)=>b.month.localeCompare(a.month)||sortSerial_(a.serial,b.serial)).map(x=>{
- const total=x.lunch+x.dinner,rate=Object.prototype.hasOwnProperty.call(rates,x.month)?rates[x.month]:(rateDefault===''?'':Number(rateDefault));
- return[x.month,x.serial,x.lunch,x.dinner,total,rate,rate===''?'':total*rate]});
- if(summary.getLastRow()>1)summary.getRange(2,1,summary.getLastRow()-1,7).clearContent();
- if(result.length)summary.getRange(2,1,result.length,7).setValues(result);
- return result.length;
+ SpreadsheetApp.flush();
+ return 'The Monthly Summary is calculated by spreadsheet formulas.';
 }
-function onEdit(e){if(!e||!e.range)return;if(![TAB,SETTINGS].includes(e.range.getSheet().getName()))return;const l=LockService.getScriptLock();if(l.tryLock(10000))try{rebuild_()}finally{l.releaseLock()}}
+function onEdit(e){ /* Spreadsheet formulas recalculate automatically. */ }
 function doGet(e){
  let cb=String(e&&e.parameter&&e.parameter.callback||'');
  if(!/^[A-Za-z_$][\w$]{0,110}$/.test(cb))return ContentService.createTextOutput('Invalid callback').setMimeType(ContentService.MimeType.TEXT);
