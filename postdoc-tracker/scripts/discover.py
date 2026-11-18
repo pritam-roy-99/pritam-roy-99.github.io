@@ -95,11 +95,22 @@ def ajo_detail(session,url):
     if ptype and not ROLE.search(ptype):return None
     subject=first_after(lines,'Subject Areas') or first_after(lines,'Subject Area')
     loc=first_after(lines,'Position Location')
-    country=loc.split(',')[-1].strip() if loc else ''
+    country=loc.split(',')[-1].strip(' []') if loc else ''
     if len(country)>60:country=''
+    loc=loc.rstrip(' []')
     deadline=first_after(lines,'Appl Deadline')
     start=first_after(lines,'Starting Date')
     position=first_after(lines,'Position Description')
+    if position.lower() in ('apply','apply now','view details','position description'):
+        position=''
+    if not position:
+        for header in page.find_all(['h2','h3','h4','b','strong']):
+            if 'position description' in header.get_text(' ',strip=True).lower():
+                parent=header.parent
+                if parent:
+                    desc=clean(parent.get_text(' ',strip=True),380)
+                    if len(desc)>35 and 'position description' in desc.lower():
+                        position=desc;break
     inst=clean(page.title.get_text(' ',strip=True).split('|')[0] if page.title else '',150)
     if not inst or inst.lower() in ('academicjobsonline','job listings'):
         for h in page.select('h1, h2, h3'):
