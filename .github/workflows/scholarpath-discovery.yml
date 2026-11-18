@@ -31,5 +31,5 @@ jobs:
             echo 'No changes'
           else
             git commit -m 'Update ScholarPath discovery feed'
-            git push
+            git push || (git pull --rebase origin main && git push)
           fi
