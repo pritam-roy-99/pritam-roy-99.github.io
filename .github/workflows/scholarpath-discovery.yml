@@ -7,6 +7,9 @@ on:
     paths:
       - 'postdoc-tracker/scripts/discover.py'
       - '.github/workflows/scholarpath-discovery.yml'
+concurrency:
+  group: scholarpath-discovery-main
+  cancel-in-progress: false
 permissions:
   contents: write
   issues: write
@@ -27,14 +30,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python postdoc-tracker/scripts/notify_issues.py
-      - name: Publish changes only if the feed has changed
+      - name: Publish feed safely even if other commits arrive
+        shell: bash
         run: |
+          set -euo pipefail
+          cp postdoc-tracker/data/latest.json "$RUNNER_TEMP/scholarpath-latest.json"
           git config user.name 'scholarpath-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add postdoc-tracker/data/latest.json
-          if git diff --cached --quiet; then
-            echo 'No changes'
-          else
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp "$RUNNER_TEMP/scholarpath-latest.json" postdoc-tracker/data/latest.json
+            git add postdoc-tracker/data/latest.json
+            if git diff --cached --quiet; then
+              echo 'No feed changes'
+              exit 0
+            fi
             git commit -m 'Update ScholarPath discovery feed'
-            git push || (git pull --rebase origin main && git push)
-          fi
+            if git push origin HEAD:main; then
+              echo 'Feed published'
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Could not publish after five attempts'
+          exit 1
