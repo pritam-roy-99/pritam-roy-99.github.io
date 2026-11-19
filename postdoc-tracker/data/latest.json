@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T07:18:31+00:00",
+  "generated_at": "2026-11-19T15:40:40+00:00",
   "status": "ok",
   "source_health": [
     {
@@ -11,7 +11,7 @@
     {
       "name": "AcademicJobsOnline",
       "ok": true,
-      "detail": "9/9 category pages; 555 links; 65 postdoctoral leads; 0 detail errors"
+      "detail": "9/9 category pages; 561 links; 62 postdoctoral leads; 0 detail errors"
     },
     {
       "name": "FindAPostDoc",
@@ -20,6 +20,126 @@
     }
   ],
   "items": [
+    {
+      "id": "345449c29cf8af40f9",
+      "title": "Postdoctoral research fellow",
+      "institute": "National Yang Ming Chiao Tung University, Lattice Field Theory Research Group",
+      "url": "https://academicjobsonline.org/ajo/jobs/33487",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Taiwan",
+      "city": "Hsinchu, Hsinchu 300093, Taiwan",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description The lattice field theory group at National Yang Ming Chiao Tung University (NYCU) is soliciting applications for two postdoc positions. The initial appointment will be for one year, with the possibility of extension for up to three years. Successful candidates are expected to collaborate with C.-J. David Lin on hadron structure or tensor networks and quantu",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "bbfb93ab6449",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "23dab34209355bfd99",
+      "title": "Research Associate in ATLAS Higgs Physics and FCC-ee Machine–Detector Interface",
+      "institute": "Stanford University / SLAC National Accelerator Laboratory, Fundamental Physics Directorate",
+      "url": "https://academicjobsonline.org/ajo/jobs/33481",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Menlo Park, California 94025, United States of America",
+      "department": "",
+      "topics": "High Energy Physics",
+      "summary": "Position Description SLAC National Accelerator Laboratory is seeking an experimental Research Associate to work on Higgs boson physics with the ATLAS experiment at CERN’s Large Hadron Collider and on machine–detector interface (MDI) studies for the Future Circular Collider (FCC-ee). The successful candidate will contribute to ATLAS Higgs physics analyses, including precision me",
+      "deadline": "2027-01-05",
+      "start": null,
+      "status": "candidate",
+      "revision": "62f98c613b9e",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "0f686e90afc74a6870",
+      "title": "DESI Operations Postdoctoral",
+      "institute": "Lawrence Berkeley National Laboratory - Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33479",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Berkeley, California 94720, United States of America",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description Lawrence Berkeley National Laboratory’s Physics Division is seeking multiple DESI Operations Postdoctoral Scholars to join the team. These roles will work with Dark Energy Spectroscopic Instrument (DESI) to produce the 10s of millions of high quality spectra for the world's largest spectroscopic redshift survey. Depending on the successful candidates’ backg",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "03c226a1ace7",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "894e260866ceb181fe",
+      "title": "Postdoctoral Scholar",
+      "institute": "Lawrence Berkeley National Laboratory - Nuclear Science",
+      "url": "https://academicjobsonline.org/ajo/jobs/33478",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Berkeley, California 94720, United States of America",
+      "department": "",
+      "topics": "Nuclear Physics",
+      "summary": "Position Description The Nuclear Science Division at Lawrence Berkeley National Laboratory (LBNL) is seeking a Postdoctoral Scholar to join the Nuclear Theory (NT) Group starting in the Fall of 2027. In this role, you will conduct original research in theoretical nuclear or particle physics to investigate topics aligned with the NT Group's research program. These research areas",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "02196a4fad97",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "18db9e9e08f9684ba6",
+      "title": "Postdoctoral Researcher in AI and HPC Engineering",
+      "institute": "We use cookies to create a better experience for you",
+      "url": "https://www.findapostdoc.com/search/Job-Details.aspx?jobcode=12787",
+      "source_name": "FindAPostDoc vacancy board",
+      "source_kind": "recruitment_board",
+      "country": "",
+      "city": "",
+      "department": "",
+      "topics": "",
+      "summary": "PostDoc | Job Details - Postdoctoral Researcher in AI and HPC Engineering at School of Science and Technology, IE University POSTDOC SEARCH MY SHORTLIST ADVICE ADVERTISE WITH US 0 Our Sites FindAPhD.com PhD projects and research opportunities FindAMa",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "5757ecc0f9a4",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "c9cc057d81d0c6af04",
+      "title": "Postdoctoral Scientist | Structural Studies | Dr Dr Suyang Zhang | LMB 3065",
+      "institute": "We use cookies to create a better experience for you",
+      "url": "https://www.findapostdoc.com/search/Job-Details.aspx?jobcode=12786",
+      "source_name": "FindAPostDoc vacancy board",
+      "source_kind": "recruitment_board",
+      "country": "",
+      "city": "",
+      "department": "",
+      "topics": "",
+      "summary": "PostDoc | Job Details - Postdoctoral Scientist | Structural Studies | Dr Dr Suyang Zhang | LMB 3065 at MRC Laboratory of Molecular Biology POSTDOC SEARCH MY SHORTLIST ADVICE ADVERTISE WITH US 0 Our Sites FindAPhD.com PhD projects and research opportu",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "a46ab5220caa",
+      "first_seen": "2026-11-19",
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
+    },
     {
       "id": "32e8a640f9597d02db",
       "title": "Quantum Horizons Alberta Postdoctoral Scholar(s) in Condensed Matter Theory",
@@ -38,7 +158,7 @@
       "revision": "566b4be9f726",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "a94516fedbaceb8f9b",
@@ -58,7 +178,7 @@
       "revision": "6a27dd4beff4",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "db9e0e9e91b6d473c3",
@@ -78,7 +198,7 @@
       "revision": "ce86c7658779",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "91c0658e2cbb02c3af",
@@ -98,7 +218,7 @@
       "revision": "2990f45e2b5b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "eb673bdc2db2c7e23b",
@@ -118,7 +238,7 @@
       "revision": "41bccc7c8d69",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "75b7d9c4a7db082c3f",
@@ -138,7 +258,7 @@
       "revision": "f7ebb53fe4a3",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "bc2dde77fbe685f991",
@@ -158,7 +278,7 @@
       "revision": "55113b1a677e",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "02926ad51cf0495748",
@@ -178,7 +298,7 @@
       "revision": "1921cafd7158",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "a0c3c1c1c3a4dfb7e6",
@@ -198,7 +318,7 @@
       "revision": "96bc19a21376",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "d24636f99106b5da8b",
@@ -218,7 +338,7 @@
       "revision": "1f62da8839d8",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "6d730db5bcfa513c03",
@@ -238,7 +358,7 @@
       "revision": "0e678adcecb1",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "8226ff8fcee04b5027",
@@ -258,7 +378,7 @@
       "revision": "d5836806d110",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "d1fd41b9a8766410d5",
@@ -278,7 +398,7 @@
       "revision": "48587348195f",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e72a613781a927bc1b",
@@ -298,7 +418,7 @@
       "revision": "b6c90c9ca65c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "07041cc77af135cc82",
@@ -318,7 +438,7 @@
       "revision": "ea2133dd9328",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e5b53c493445b0557c",
@@ -338,7 +458,7 @@
       "revision": "c61e6f7e64c2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e016fc430afb1c74b5",
@@ -350,15 +470,15 @@
       "country": "France",
       "city": "Gif sur Yvette, Ile de France 91191, France",
       "department": "",
-      "topics": "Physics",
+      "topics": "Mathematical Physics",
       "summary": "Position Description Expression of interest for JTF-funded postdoc positions in black-hole microstates, numerical relativity and GW phenomenology (Cambridge, Paris-Saclay, Rome Sapienza, Urbana-Champaign) We expect to open several postdoctoral positions within the new international project “The Microscopic Structure of Black Holes” (MicroBH) , recently funded by the John Temple",
       "deadline": "2026-12-15",
       "start": null,
       "status": "candidate",
-      "revision": "2b17666c5b37",
+      "revision": "122816ca092c",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "df3d9ea9c4bfb09cd8",
@@ -378,7 +498,7 @@
       "revision": "3a9c7c4fda8b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e35703c50457ff87de",
@@ -398,7 +518,7 @@
       "revision": "c4702baaa1c4",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "98f4a6bc2caf5074db",
@@ -418,7 +538,7 @@
       "revision": "f48dd2554385",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e4714f262b659f6ab0",
@@ -438,7 +558,7 @@
       "revision": "e135e8a12cc0",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "7e802b44250d84a288",
@@ -458,7 +578,7 @@
       "revision": "526a5303198a",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "a984555917ce2c05ee",
@@ -478,7 +598,7 @@
       "revision": "e9cb9de7fffd",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "cf8ad090582bbcdb18",
@@ -498,7 +618,7 @@
       "revision": "25b13063ca37",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "afa3817f039bb2ab4a",
@@ -510,15 +630,15 @@
       "country": "Switzerland",
       "city": "Lausanne, Vaud CH-1015, Switzerland",
       "department": "",
-      "topics": "High-Energy Theory",
+      "topics": "Theoretical Physics",
       "summary": "Position Description The High Energy Theory (HET) group at the Ecole Polytechnique Federale de Lausanne (EPFL) invites applications for a postdoctoral Research Associate position starting in the fall of 2027, but possibly even earlier. Next fall the HET senior members will consist of three professors (Victor Gorbenko, Joao Penedones and Riccardo Rattazzi) and two staff scientis",
       "deadline": "2026-12-18",
       "start": null,
       "status": "candidate",
-      "revision": "b91f98b161cb",
+      "revision": "a157a48cfd55",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "967834e10399fbdde5",
@@ -530,15 +650,15 @@
       "country": "Canada",
       "city": "Sherbrooke, Quebec J1K 2R1, Canada",
       "department": "",
-      "topics": "Physics",
+      "topics": "Computer Science",
       "summary": "Position Description Postdoctoral Positions in Quantum Computing and Artificial Intelligence The research group of Cunlu Zhou at the Université de Sherbrooke invites applications for multiple postdoctoral research positions in quantum computing, quantum algorithms, quantum error correction, quantum learning, and artificial intelligence. Our research develops theoretical foundat",
       "deadline": "2026-12-13",
       "start": null,
       "status": "candidate",
-      "revision": "5e628248ca1a",
+      "revision": "aadaeff0f603",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "498ee1bfc6b15cf834",
@@ -558,7 +678,7 @@
       "revision": "04a806dcecaf",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "cd4c89d4e0529a2272",
@@ -578,7 +698,7 @@
       "revision": "c1c59c85a5ac",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "2d1398f902b7fb2888",
@@ -598,7 +718,7 @@
       "revision": "746b6b7aac83",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "f495f37a040290aca6",
@@ -610,15 +730,15 @@
       "country": "Denmark",
       "city": "Odense, Odense 5000, Denmark",
       "department": "",
-      "topics": "Mathematics",
+      "topics": "Theoretical Physics",
       "summary": "Position Description The position The Centre for Quantum Mathematics (QM) at the Department of Mathematics and Computer Science, University of Southern Denmark (SDU), seeks outstanding candidates to fill a number of 2-3-year postdotoral positions in quantum algorithms and quantum software. The targeted starting date of the position is 01.08.2027 , or as soon as possible thereaf",
       "deadline": "2027-01-03",
       "start": null,
       "status": "candidate",
-      "revision": "b0e78e97ffbb",
+      "revision": "ea59d1f0316c",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "a8dc691944b2c4c8bd",
@@ -630,15 +750,15 @@
       "country": "United States of America",
       "city": "Berkeley, California 94720, United States of America",
       "department": "",
-      "topics": "Statistical Physics",
+      "topics": "Condensed Matter Physics",
       "summary": "Position Description The Department of Physics at the University of California, Berkeley plans to hire one or more Postdoctoral Scholars in the field of theoretical condensed matter physics, including quantum condensed matter theory, statistical physics, many-body physics, and soft matter physics. This postdoctoral position is funded by the Berkeley Condensed Matter Theory Cent",
       "deadline": "2026-11-19",
       "start": null,
       "status": "candidate",
-      "revision": "603e4ac7b2e0",
+      "revision": "a6a6b93d8ffa",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "8efd9fc435abf3ed06",
@@ -650,15 +770,15 @@
       "country": "Japan",
       "city": "Tsukuba, Ibaraki 305-0801, Japan",
       "department": "",
-      "topics": "Nuclear Physics",
+      "topics": "High Energy Physics",
       "summary": "Position Description We are seeking outstanding applicants for several Postdoctoral Fellow positions at QUP in experimental physics. QUP aims to explore new quantum fields and forces and probe physical phenomena with extremely weak couplings, such as light dark matter, axions, and gravitational waves, by pioneering the weak-coupling frontier using cutting-edge quantum sensors a",
       "deadline": "2026-12-31",
       "start": null,
       "status": "candidate",
-      "revision": "0d265498bdd2",
+      "revision": "4facd33fe2b6",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "b345238c6a3d93c661",
@@ -678,7 +798,7 @@
       "revision": "82649f530aaa",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "794d1822ce84f80ebb",
@@ -698,7 +818,7 @@
       "revision": "eb1d8cb69b09",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "bf7a5f5155af3f1f1a",
@@ -718,7 +838,7 @@
       "revision": "76e327262006",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "866881b1c32b8f99eb",
@@ -738,7 +858,7 @@
       "revision": "cd86fdf26b92",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "6cf3de78416057323f",
@@ -758,7 +878,7 @@
       "revision": "6e50d2c60f15",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "dccf256b0e23488e9f",
@@ -778,7 +898,7 @@
       "revision": "63c27d542974",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "11b32c33ab3f9e48f6",
@@ -790,15 +910,15 @@
       "country": "Germany",
       "city": "Heidelberg, Baden-Wurttemberg D-69120, Germany",
       "department": "",
-      "topics": "Theoretical Physics",
+      "topics": "Physics",
       "summary": "Position Description POSTDOCTORAL POSITIONS IN THEORETICAL PHYSICS INSTITUTE FOR THEORETICAL PHYSICS AT THE UNIVERSITY OF HEIDELBERG The Fundamental Physics Division of the Institute for Theoretical Physics at the University of Heidelberg invites applications for postdoctoral positions in theoretical physics (particle physics, cosmology and gravitational physics). The positions",
       "deadline": null,
       "start": null,
       "status": "candidate",
-      "revision": "68c7c77be727",
+      "revision": "48c2750177f5",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "4f1c0edfc7a8abfb8e",
@@ -818,7 +938,7 @@
       "revision": "1468edc7c08c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "1353d4a74b4ae5a42f",
@@ -838,7 +958,7 @@
       "revision": "3bedab12b50a",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "299c63da64758992af",
@@ -858,7 +978,7 @@
       "revision": "97ede2d61fba",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "ff4a9ef67a2cf2fde8",
@@ -878,7 +998,7 @@
       "revision": "ad4762dbef18",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e6f0ea4b4926690d51",
@@ -890,15 +1010,15 @@
       "country": "Japan",
       "city": "Suita, Osaka 5650871, Japan",
       "department": "",
-      "topics": "Bioimaging",
+      "topics": "Bioinformatics",
       "summary": "Position Description [Advanced Postdoc Program of IFReC, The University of Osaka] The University of Osaka Immunology Frontier Research Center (IFReC) is recruiting post-doctoral researchers for its Advanced Postdoc Program. This program offers three-year employment to promising young researchers. Selected applicants have access to continually upgraded state-of-the-art facilitie",
       "deadline": "2027-01-31",
       "start": null,
       "status": "candidate",
-      "revision": "c30894372fb0",
+      "revision": "b0684621539d",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "4d00342da987feaadc",
@@ -918,7 +1038,7 @@
       "revision": "4f0f29e91b79",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "2a650234a29ead4b3e",
@@ -938,7 +1058,7 @@
       "revision": "b808d6d3bb9a",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "f66d576b4f4d679ea6",
@@ -958,7 +1078,7 @@
       "revision": "1447ab787cc5",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "450139a6e7104eac4c",
@@ -978,7 +1098,7 @@
       "revision": "7a2d2b008408",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "af97a95c4eac0dc04a",
@@ -990,15 +1110,15 @@
       "country": "United States of America",
       "city": "Blacksburg, Virginia 24061, United States of America",
       "department": "",
-      "topics": "High-Energy Theory",
+      "topics": "Theoretical Physics",
       "summary": "Position Description The String Group and the Department of Physics at Virginia Tech is seeking a postdoctoral associate or research associate position (depending on experience) in High Energy Theoretical Physics and String Theory. The focus of the position is on string theory, including string compactifications, sigma models, F-theory, effective theories and string geometry an",
       "deadline": "2026-12-01",
       "start": null,
       "status": "candidate",
-      "revision": "f645403da8a0",
+      "revision": "18c67f28c668",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "0413c703beb79f99f0",
@@ -1018,7 +1138,7 @@
       "revision": "b7224d32ceb2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "14261529c4115e01c5",
@@ -1038,7 +1158,7 @@
       "revision": "1053b866880c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "5599d17b457537db10",
@@ -1058,7 +1178,7 @@
       "revision": "56f4d5949dd2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "42c45f838566d7a47d",
@@ -1078,7 +1198,7 @@
       "revision": "eaa76ee2b55d",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "08e9750a1722aabc69",
@@ -1098,7 +1218,7 @@
       "revision": "5655f266877f",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "51a3efcdf1ff96e36f",
@@ -1110,15 +1230,15 @@
       "country": "United States of America",
       "city": "Batavia, Illinois 60510, United States of America",
       "department": "",
-      "topics": "Physics",
+      "topics": "High Energy Physics",
       "summary": "Position Description Fermilab is excited to announce one postdoctoral researcher position in AI for science with Dr. Aleksandra Ciprijanovic (alexciprijanovic.com) and her research group! The successful candidate will join a team working at the intersection of deep learning, cosmology, and high-energy physics, with opportunities to contribute to both methodological AI research",
       "deadline": "2026-12-30",
       "start": null,
       "status": "candidate",
-      "revision": "3d151e658636",
+      "revision": "ae399c1d6fd2",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "362a15755cb817c358",
@@ -1138,7 +1258,7 @@
       "revision": "cd18d44c1b2b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "386281b9e4725d9e31",
@@ -1150,15 +1270,15 @@
       "country": "United States of America",
       "city": "Los Angeles, California 90095-1596, United States of America",
       "department": "",
-      "topics": "Quantum Computing",
+      "topics": "AI/Machine Learning",
       "summary": "Position Description Postdoctoral Scholar in AI and Quantum Computing University of California, Los Angeles — Computer Science Location: Los Angeles, California Faculty supervisor / research group: Professors Jason Cong and Yizhou Sun Expected start date: Winter Quarter of 2027 Appointment duration: 2-3 years Salary: $75K maybe adjusted based on experience The UCLA research tea",
       "deadline": "2027-01-01",
       "start": null,
       "status": "candidate",
-      "revision": "a29bc80516a5",
+      "revision": "a0d82399d2b6",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "3d395765b1ec5883ed",
@@ -1170,155 +1290,15 @@
       "country": "United States of America",
       "city": "Syracuse, New York 13210, United States of America",
       "department": "",
-      "topics": "Physics",
+      "topics": "Computer Science",
       "summary": "Position Description Syracuse University's Institute for Quantum and Information Sciences invites applications for a postdoctoral position at the intersection of physics and machine learning in Alexander Maloney's research group, as part of the Simons Collaboration on the Physics of Learning and Neural Computation . The anticipated start date is September 2026, but is flexible.",
       "deadline": "2026-12-01",
       "start": null,
       "status": "candidate",
-      "revision": "f7cb003bf289",
+      "revision": "1058bdbaf0ec",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "53d574117eccd57eb9",
-      "title": "Postdoctoral Positions in Theoretical Physics",
-      "institute": "Syracuse University, Institute for Quantum and Information Sciences",
-      "url": "https://academicjobsonline.org/ajo/jobs/33273",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "United States of America",
-      "city": "Syracuse, New York 13210, United States of America",
-      "department": "",
-      "topics": "Theoretical Physics",
-      "summary": "Position Description Syracuse University's department of physics and Institute for Quantum and Information Sciences invite applications for postdoctoral positions in theoretical physics to start in September of 2027. The successful applicant will join an exciting theoretical physics group, including Simon Catterall, Scott Collier, Jay Hubisz, Jack Laiho, Alexander Maloney, Jaso",
-      "deadline": "2026-12-01",
-      "start": null,
-      "status": "candidate",
-      "revision": "085b6ce48e22",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "1f09d91e803033a475",
-      "title": "Postdoctoral Positions in High-Energy Theory",
-      "institute": "Harvard University, Department of Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33267",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "United States of America",
-      "city": "Cambridge, Massachusetts 02138, United States of America",
-      "department": "",
-      "topics": "Physics",
-      "summary": "Position Description Harvard University invites applications for a Postdoctoral Fellow position in high-energy theory, including, but not limited to, particle physics, particle astrophysics, quantum gravity, quantum field theory, and string theory. The expected start date is September 1, 2027. The initial appointment is for one year, with the possibility of annual renewal for a",
-      "deadline": "2026-12-07",
-      "start": null,
-      "status": "candidate",
-      "revision": "5e68b6e7f9ed",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "f5dcdbfea5bf2ef1f4",
-      "title": "Postdoctoral research associate - particle theory",
-      "institute": "University of Zurich, Department of Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33264",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Switzerland",
-      "city": "Zurich, Zurich 8057, Switzerland",
-      "department": "",
-      "topics": "Physics",
-      "summary": "Position Description The Department of Physics at the University of Zurich has openings for postdoctoral positions in particle physics phenomenology starting fall 2027. The research interests of the group, headed by Thomas Gehrmann, Massimiliano Grazzini, Gino Isidori, Stefano Pozzorini, Peter Stoffer and Max Zoller, involve collider phenomenology, precision calculations, Higgs",
-      "deadline": null,
-      "start": null,
-      "status": "candidate",
-      "revision": "0b6a41ec3069",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "1f1e3fead00cbc908f",
-      "title": "Postdoc positions at the University of Bern",
-      "institute": "University of Bern, Albert Einstein Center for fundamental Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33263",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Switzerland",
-      "city": "Berne, Bern 3012, Switzerland",
-      "department": "",
-      "topics": "High Energy Physics",
-      "summary": "Position Description The Institute for Theoretical Physics of the Albert Einstein Center for Fundamental Physics at the University of Bern expects to have one or more postdoctoral positions available, starting in Fall 2027. The faculty at the institute consists of Thomas Becher, Matthias Blau, Gilberto Colangelo, Valentin Hirschi, Martin Hoferichter, Mikko Laine, Susanne Reffer",
-      "deadline": "2026-12-01",
-      "start": null,
-      "status": "candidate",
-      "revision": "29e845d947d8",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "a6a0f2cb1438215123",
-      "title": "High Energy Theory Postdoc position at the Shool of Quantum, University of Chinese Academy of Sciences (UCAS)",
-      "institute": "University of Chinese Academy of Sciences (UCAS), School of Quantum",
-      "url": "https://academicjobsonline.org/ajo/jobs/33262",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "China",
-      "city": "Beijing, Beijing 100190, China",
-      "department": "",
-      "topics": "High-Energy Theory",
-      "summary": "Position Description The School of Quantum at the University of Chinese Academy of Sciences (SQ-UCAS) in Beijing sincerely invites applications for a number of postdoc fellow positions in the high energy theory group, starting in September 2027. The current faculty members of the high energy theory group at SQ-UCAS include: Ping Gao, Masahiro Nozaki, Cheng Peng, Huajia Wang, Yu",
-      "deadline": "2026-12-31",
-      "start": null,
-      "status": "candidate",
-      "revision": "5e107ad04dc3",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "57f5eec60f702ee1b4",
-      "title": "Postdoctoral Researcher in Experimental Cosmology",
-      "institute": "University of Chicago, Astronomy and Astrophysics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33259",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "United States of America",
-      "city": "Chicago, Illinois 60637, United States of America",
-      "department": "",
-      "topics": "Astrophysics",
-      "summary": "Position Description The University of Chicago invites applications for a postdoctoral research position in experimental cosmology to work with Prof. Jessica Zebrowski. The Zebrowski group develops new instruments and observational techniques to study the early universe, large-scale structure, and galaxy formation across cosmic time. Research areas include millimeter-wave and f",
-      "deadline": "2027-01-15",
-      "start": null,
-      "status": "candidate",
-      "revision": "b81a1dee5012",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
-    },
-    {
-      "id": "cb0f6daf51ad65cf49",
-      "title": "Postdoctoral position in Theoretical Physics",
-      "institute": "Queen Mary University of London, Centre for Geometry, Analysis and Gravition",
-      "url": "https://academicjobsonline.org/ajo/jobs/33253",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "United Kingdom",
-      "city": "London, London E1 4NS, United Kingdom",
-      "department": "",
-      "topics": "Theoretical Physics",
-      "summary": "Position Description The Centre for Geometry Analysis and Gravitation (GAnG) in the School of Mathematical Science and the Centre for Theoretical Physics and Astronomy (CTPA) in the School of Physical and Chemical Sciences invite applications for a 2-year fixed-term Postdoctoral Research Assistant position in Theoretical Physics. Applicants should have a strong research record",
-      "deadline": "2026-12-07",
-      "start": null,
-      "status": "candidate",
-      "revision": "9da23065455e",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_changed": "2026-11-19",
+      "last_seen": "2026-11-19"
     },
     {
       "id": "7d8f8be58ef6ab9f83",
@@ -1338,7 +1318,7 @@
       "revision": "082b1ed0c487",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "e0f081cbe6947c1255",
@@ -1358,7 +1338,7 @@
       "revision": "29469f0a43ee",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "952d6b337413069d33",
@@ -1378,7 +1358,7 @@
       "revision": "bcc86aab5fff",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "941a92440756e2d982",
@@ -1398,7 +1378,7 @@
       "revision": "838840ab6bb2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "64d4c8595dbd5cd460",
@@ -1418,7 +1398,7 @@
       "revision": "e65f2f27459b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-18"
+      "last_seen": "2026-11-19"
     },
     {
       "id": "c2aee4b57bb77d2fc2",
@@ -1438,6 +1418,146 @@
       "revision": "f55863230018",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
+      "last_seen": "2026-11-19"
+    },
+    {
+      "id": "53d574117eccd57eb9",
+      "title": "Postdoctoral Positions in Theoretical Physics",
+      "institute": "Syracuse University, Institute for Quantum and Information Sciences",
+      "url": "https://academicjobsonline.org/ajo/jobs/33273",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Syracuse, New York 13210, United States of America",
+      "department": "",
+      "topics": "Theoretical Physics",
+      "summary": "Position Description Syracuse University's department of physics and Institute for Quantum and Information Sciences invite applications for postdoctoral positions in theoretical physics to start in September of 2027. The successful applicant will join an exciting theoretical physics group, including Simon Catterall, Scott Collier, Jay Hubisz, Jack Laiho, Alexander Maloney, Jaso",
+      "deadline": "2026-12-01",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "085b6ce48e22",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "1f09d91e803033a475",
+      "title": "Postdoctoral Positions in High-Energy Theory",
+      "institute": "Harvard University, Department of Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33267",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Cambridge, Massachusetts 02138, United States of America",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description Harvard University invites applications for a Postdoctoral Fellow position in high-energy theory, including, but not limited to, particle physics, particle astrophysics, quantum gravity, quantum field theory, and string theory. The expected start date is September 1, 2027. The initial appointment is for one year, with the possibility of annual renewal for a",
+      "deadline": "2026-12-07",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "5e68b6e7f9ed",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "f5dcdbfea5bf2ef1f4",
+      "title": "Postdoctoral research associate - particle theory",
+      "institute": "University of Zurich, Department of Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33264",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Switzerland",
+      "city": "Zurich, Zurich 8057, Switzerland",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description The Department of Physics at the University of Zurich has openings for postdoctoral positions in particle physics phenomenology starting fall 2027. The research interests of the group, headed by Thomas Gehrmann, Massimiliano Grazzini, Gino Isidori, Stefano Pozzorini, Peter Stoffer and Max Zoller, involve collider phenomenology, precision calculations, Higgs",
+      "deadline": null,
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "0b6a41ec3069",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "1f1e3fead00cbc908f",
+      "title": "Postdoc positions at the University of Bern",
+      "institute": "University of Bern, Albert Einstein Center for fundamental Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33263",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Switzerland",
+      "city": "Berne, Bern 3012, Switzerland",
+      "department": "",
+      "topics": "High Energy Physics",
+      "summary": "Position Description The Institute for Theoretical Physics of the Albert Einstein Center for Fundamental Physics at the University of Bern expects to have one or more postdoctoral positions available, starting in Fall 2027. The faculty at the institute consists of Thomas Becher, Matthias Blau, Gilberto Colangelo, Valentin Hirschi, Martin Hoferichter, Mikko Laine, Susanne Reffer",
+      "deadline": "2026-12-01",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "29e845d947d8",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "a6a0f2cb1438215123",
+      "title": "High Energy Theory Postdoc position at the Shool of Quantum, University of Chinese Academy of Sciences (UCAS)",
+      "institute": "University of Chinese Academy of Sciences (UCAS), School of Quantum",
+      "url": "https://academicjobsonline.org/ajo/jobs/33262",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "China",
+      "city": "Beijing, Beijing 100190, China",
+      "department": "",
+      "topics": "High-Energy Theory",
+      "summary": "Position Description The School of Quantum at the University of Chinese Academy of Sciences (SQ-UCAS) in Beijing sincerely invites applications for a number of postdoc fellow positions in the high energy theory group, starting in September 2027. The current faculty members of the high energy theory group at SQ-UCAS include: Ping Gao, Masahiro Nozaki, Cheng Peng, Huajia Wang, Yu",
+      "deadline": "2026-12-31",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "5e107ad04dc3",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "57f5eec60f702ee1b4",
+      "title": "Postdoctoral Researcher in Experimental Cosmology",
+      "institute": "University of Chicago, Astronomy and Astrophysics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33259",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Chicago, Illinois 60637, United States of America",
+      "department": "",
+      "topics": "Astrophysics",
+      "summary": "Position Description The University of Chicago invites applications for a postdoctoral research position in experimental cosmology to work with Prof. Jessica Zebrowski. The Zebrowski group develops new instruments and observational techniques to study the early universe, large-scale structure, and galaxy formation across cosmic time. Research areas include millimeter-wave and f",
+      "deadline": "2027-01-15",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "b81a1dee5012",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-18"
+    },
+    {
+      "id": "cb0f6daf51ad65cf49",
+      "title": "Postdoctoral position in Theoretical Physics",
+      "institute": "Queen Mary University of London, Centre for Geometry, Analysis and Gravition",
+      "url": "https://academicjobsonline.org/ajo/jobs/33253",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United Kingdom",
+      "city": "London, London E1 4NS, United Kingdom",
+      "department": "",
+      "topics": "Theoretical Physics",
+      "summary": "Position Description The Centre for Geometry Analysis and Gravitation (GAnG) in the School of Mathematical Science and the Centre for Theoretical Physics and Astronomy (CTPA) in the School of Physical and Chemical Sciences invite applications for a 2-year fixed-term Postdoctoral Research Assistant position in Theoretical Physics. Applicants should have a strong research record",
+      "deadline": "2026-12-07",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "9da23065455e",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
       "last_seen": "2026-11-18"
     },
     {
@@ -1454,7 +1574,7 @@
       "summary": "PostDoc | Job Details - Postdoc in Digital Humanities / Information Retrieval at School of English, Drama and Film, University College Dublin POSTDOC SEARCH MY SHORTLIST ADVICE ADVERTISE WITH US 0 Our Sites FindAPhD.com PhD projects and research oppo",
       "deadline": null,
       "start": null,
-      "status": "candidate",
+      "status": "not_seen_this_scan",
       "revision": "20b722ead05b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
@@ -1474,7 +1594,7 @@
       "summary": "PostDoc | Job Details - Postdoctoral Fellow - Movember Institute and the University of Michigan at School of Social Work, University of Michigan POSTDOC SEARCH MY SHORTLIST ADVICE ADVERTISE WITH US 0 Our Sites FindAPhD.com PhD projects and research o",
       "deadline": null,
       "start": null,
-      "status": "candidate",
+      "status": "not_seen_this_scan",
       "revision": "b56c4b2c1dbf",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
@@ -1661,6 +1781,6 @@
       "last_seen": "2026-11-18"
     }
   ],
-  "candidate_count": 82,
+  "candidate_count": 88,
   "notes": "Discovery only. Follow each original posting to confirm dates, terms, eligibility and status."
 }
