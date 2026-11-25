@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-24T17:37:53+00:00",
+  "generated_at": "2026-11-25T17:08:27+00:00",
   "status": "ok",
   "source_health": [
     {
@@ -11,7 +11,7 @@
     {
       "name": "AcademicJobsOnline",
       "ok": true,
-      "detail": "9/9 category pages; 570 links; 61 postdoctoral leads; 0 detail errors"
+      "detail": "9/9 category pages; 574 links; 60 postdoctoral leads; 0 detail errors"
     },
     {
       "name": "FindAPostDoc",
@@ -20,6 +20,86 @@
     }
   ],
   "items": [
+    {
+      "id": "e5e12d5e98aa88fca3",
+      "title": "Postdoctoral Research Assistant",
+      "institute": "University of Oxford, Theoretical Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33536",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United Kingdom",
+      "city": "Oxford, Oxfordshire OX1, United Kingdom",
+      "department": "",
+      "topics": "Theoretical Physics",
+      "summary": "Position Description Applications are invited for a Postdoctoral Research Assistant in the Collider-QCD theory group. The successful candidate will work with Profs. Fabrizio Caola and Gavin Salam. The post holder will be a member of the Collider-QCD theory group, with responsibility for carrying out research in a range of areas in QCD physics at colliders, including fixed order",
+      "deadline": "2026-12-15",
+      "start": null,
+      "status": "candidate",
+      "revision": "ac943f67470a",
+      "first_seen": "2026-11-25",
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
+    },
+    {
+      "id": "fc0a3b1913c6797f59",
+      "title": "Theoretical Physics Postdoc in the Abdus Salam Centre at Imperial",
+      "institute": "Imperial College London, Theoretical Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33535",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United Kingdom",
+      "city": "London, London, City of SW7 2AZ, United Kingdom",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description Applications are invited for Research Associate (postdoc) positions in Theoretical Physics to be held in the Abdus Salam Centre for Theoretical Physics at Imperial College London to start autumn 2027. Members of the Centre undertake world-leading research in modern theoretical physics, spanning quantum field theory, gravity, string theory, cosmology and the",
+      "deadline": "2027-01-05",
+      "start": null,
+      "status": "candidate",
+      "revision": "da8805f09d88",
+      "first_seen": "2026-11-25",
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
+    },
+    {
+      "id": "a0c82e818f85180a72",
+      "title": "Postdoctoral Research Position",
+      "institute": "KEK, Theory Center, Institute of Particle and Nuclear Studies",
+      "url": "https://academicjobsonline.org/ajo/jobs/33437",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Japan",
+      "city": "Tsukuba, Ibaraki 3050801, Japan",
+      "department": "",
+      "topics": "Computational Science",
+      "summary": "Position Description The successful candidate will join the Theory Center of the Institute of Particle and Nuclear Studies (IPNS) at KEK and will pursue the development of lattice QCD simulation codes, their implementation on GPU architectures, and applications of deep learning and/or AI to lattice field theory. Motivated applicants are welcome regardless of prior experience. A",
+      "deadline": "2027-01-06",
+      "start": null,
+      "status": "candidate",
+      "revision": "bf94b42e40a4",
+      "first_seen": "2026-11-25",
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
+    },
+    {
+      "id": "ca5d4a6ce0274ea51e",
+      "title": "Postdoctoral Research Associate on Fabrication and Measurement of Novel Quantum Devices and Phenomena",
+      "institute": "Los Alamos National Laboratory",
+      "url": "https://academicjobsonline.org/ajo/jobs/33411",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "United States of America",
+      "city": "Los Alamos, New Mexico 87545, United States of America",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description Quantum Postdoctoral Research Associate Los Alamos National Laboratory Los Alamos, NM Los Alamos National Laboratory (LANL) is a multidisciplinary research institution engaged in strategic science on behalf of national security. We are seeking multiple scientifically outstanding and highly motivated Quantum Postdoctoral Research Associates to make and measu",
+      "deadline": null,
+      "start": null,
+      "status": "candidate",
+      "revision": "e86e3772cb68",
+      "first_seen": "2026-11-25",
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
+    },
     {
       "id": "256d4a98f3be782e56",
       "title": "Research Associate in Black Hole Physics",
@@ -38,7 +118,7 @@
       "revision": "796ce0075073",
       "first_seen": "2026-11-24",
       "last_changed": "2026-11-24",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "fa6ee064c3850bb18e",
@@ -58,7 +138,7 @@
       "revision": "ca484ba1b189",
       "first_seen": "2026-11-23",
       "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "af01116f67908493cb",
@@ -78,7 +158,7 @@
       "revision": "2be5e2572b9c",
       "first_seen": "2026-11-23",
       "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "d5bb53273bf528ce80",
@@ -98,7 +178,7 @@
       "revision": "debf23374ec3",
       "first_seen": "2026-11-23",
       "last_changed": "2026-11-24",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "8ad41fa63d339f1a6f",
@@ -118,7 +198,7 @@
       "revision": "745738a727fc",
       "first_seen": "2026-11-23",
       "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "f1868f9d8008147d6e",
@@ -138,7 +218,7 @@
       "revision": "538f9d01a993",
       "first_seen": "2026-11-23",
       "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "4909b5e04469c4e62c",
@@ -158,7 +238,7 @@
       "revision": "70653b63c128",
       "first_seen": "2026-11-21",
       "last_changed": "2026-11-21",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "6baa3e4e73e2eee3f3",
@@ -178,7 +258,7 @@
       "revision": "8d963c918216",
       "first_seen": "2026-11-20",
       "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "ef54915b1b3d1c3fb0",
@@ -198,7 +278,7 @@
       "revision": "a4b20fccd114",
       "first_seen": "2026-11-20",
       "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "567c90c319090fd2b1",
@@ -210,15 +290,15 @@
       "country": "United States of America",
       "city": "Piscataway, New Jersey 08854, United States of America",
       "department": "",
-      "topics": "Physics",
+      "topics": "High-Energy Theory",
       "summary": "Position Description The New High Energy Theory Center (NHETC) at Rutgers University plans to hire one or more theoretical high energy physics post-doctoral associates with three-year terms beginning September 1, 2027 or after. The theory group faculty members include Tom Banks, Matt Buckley, Emanuel Diaconescu, Daniel Friedan, Sergei Lukyanov, Gregory Moore, and Scott Thomas,",
       "deadline": "2026-12-31",
       "start": null,
       "status": "candidate",
-      "revision": "f8fe8bd54db6",
+      "revision": "f64c82c34f57",
       "first_seen": "2026-11-20",
-      "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
     },
     {
       "id": "345449c29cf8af40f9",
@@ -238,7 +318,7 @@
       "revision": "bbfb93ab6449",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "23dab34209355bfd99",
@@ -258,7 +338,7 @@
       "revision": "62f98c613b9e",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "0f686e90afc74a6870",
@@ -278,7 +358,7 @@
       "revision": "03c226a1ace7",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "894e260866ceb181fe",
@@ -298,7 +378,7 @@
       "revision": "02196a4fad97",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "18db9e9e08f9684ba6",
@@ -318,7 +398,7 @@
       "revision": "5757ecc0f9a4",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "c9cc057d81d0c6af04",
@@ -338,7 +418,7 @@
       "revision": "a46ab5220caa",
       "first_seen": "2026-11-19",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "32e8a640f9597d02db",
@@ -358,7 +438,7 @@
       "revision": "566b4be9f726",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "a94516fedbaceb8f9b",
@@ -378,7 +458,7 @@
       "revision": "6a27dd4beff4",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "db9e0e9e91b6d473c3",
@@ -398,7 +478,7 @@
       "revision": "ce86c7658779",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "91c0658e2cbb02c3af",
@@ -418,7 +498,7 @@
       "revision": "2990f45e2b5b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "eb673bdc2db2c7e23b",
@@ -438,7 +518,7 @@
       "revision": "41bccc7c8d69",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "75b7d9c4a7db082c3f",
@@ -458,7 +538,7 @@
       "revision": "f7ebb53fe4a3",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "bc2dde77fbe685f991",
@@ -478,7 +558,7 @@
       "revision": "55113b1a677e",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "02926ad51cf0495748",
@@ -498,7 +578,7 @@
       "revision": "1921cafd7158",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "a0c3c1c1c3a4dfb7e6",
@@ -518,7 +598,7 @@
       "revision": "96bc19a21376",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "d24636f99106b5da8b",
@@ -538,7 +618,7 @@
       "revision": "1f62da8839d8",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "6d730db5bcfa513c03",
@@ -558,7 +638,7 @@
       "revision": "0e678adcecb1",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "8226ff8fcee04b5027",
@@ -578,7 +658,7 @@
       "revision": "d5836806d110",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "d1fd41b9a8766410d5",
@@ -598,7 +678,7 @@
       "revision": "48587348195f",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e72a613781a927bc1b",
@@ -618,7 +698,7 @@
       "revision": "b6c90c9ca65c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "07041cc77af135cc82",
@@ -638,7 +718,7 @@
       "revision": "ea2133dd9328",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e5b53c493445b0557c",
@@ -658,7 +738,7 @@
       "revision": "c61e6f7e64c2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e016fc430afb1c74b5",
@@ -678,7 +758,7 @@
       "revision": "2b17666c5b37",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "df3d9ea9c4bfb09cd8",
@@ -698,7 +778,7 @@
       "revision": "3a9c7c4fda8b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e35703c50457ff87de",
@@ -718,7 +798,7 @@
       "revision": "c4702baaa1c4",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "98f4a6bc2caf5074db",
@@ -738,7 +818,7 @@
       "revision": "f48dd2554385",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e4714f262b659f6ab0",
@@ -758,7 +838,7 @@
       "revision": "e135e8a12cc0",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "7e802b44250d84a288",
@@ -778,7 +858,7 @@
       "revision": "526a5303198a",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "a984555917ce2c05ee",
@@ -798,7 +878,7 @@
       "revision": "e9cb9de7fffd",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "cf8ad090582bbcdb18",
@@ -818,7 +898,7 @@
       "revision": "25b13063ca37",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "afa3817f039bb2ab4a",
@@ -838,7 +918,7 @@
       "revision": "a157a48cfd55",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-19",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "967834e10399fbdde5",
@@ -850,15 +930,15 @@
       "country": "Canada",
       "city": "Sherbrooke, Quebec J1K 2R1, Canada",
       "department": "",
-      "topics": "Chemistry",
+      "topics": "Theoretical Physics",
       "summary": "Position Description Postdoctoral Positions in Quantum Computing and Artificial Intelligence The research group of Cunlu Zhou at the Université de Sherbrooke invites applications for multiple postdoctoral research positions in quantum computing, quantum algorithms, quantum error correction, quantum learning, and artificial intelligence. Our research develops theoretical foundat",
       "deadline": "2026-12-13",
       "start": null,
       "status": "candidate",
-      "revision": "ef9e9f6fa92d",
+      "revision": "fa9c538944ce",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
     },
     {
       "id": "498ee1bfc6b15cf834",
@@ -878,7 +958,7 @@
       "revision": "04a806dcecaf",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "cd4c89d4e0529a2272",
@@ -898,7 +978,7 @@
       "revision": "c1c59c85a5ac",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "2d1398f902b7fb2888",
@@ -918,7 +998,7 @@
       "revision": "746b6b7aac83",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "f495f37a040290aca6",
@@ -938,7 +1018,7 @@
       "revision": "ea59d1f0316c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-24",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "a8dc691944b2c4c8bd",
@@ -950,15 +1030,15 @@
       "country": "United States of America",
       "city": "Berkeley, California 94720, United States of America",
       "department": "",
-      "topics": "Physics",
+      "topics": "Condensed Matter Physics",
       "summary": "Position Description The Department of Physics at the University of California, Berkeley plans to hire one or more Postdoctoral Scholars in the field of theoretical condensed matter physics, including quantum condensed matter theory, statistical physics, many-body physics, and soft matter physics. This postdoctoral position is funded by the Berkeley Condensed Matter Theory Cent",
       "deadline": "2026-11-19",
       "start": null,
       "status": "candidate",
-      "revision": "0a89b43f54d0",
+      "revision": "a6a6b93d8ffa",
       "first_seen": "2026-11-18",
-      "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_changed": "2026-11-25",
+      "last_seen": "2026-11-25"
     },
     {
       "id": "8efd9fc435abf3ed06",
@@ -978,7 +1058,7 @@
       "revision": "0d265498bdd2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "b345238c6a3d93c661",
@@ -998,7 +1078,7 @@
       "revision": "859cae810867",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-24",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "794d1822ce84f80ebb",
@@ -1018,7 +1098,7 @@
       "revision": "eb1d8cb69b09",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "bf7a5f5155af3f1f1a",
@@ -1038,7 +1118,7 @@
       "revision": "76e327262006",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "866881b1c32b8f99eb",
@@ -1058,7 +1138,7 @@
       "revision": "cd86fdf26b92",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "6cf3de78416057323f",
@@ -1078,7 +1158,7 @@
       "revision": "0ec964f6b7d2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "dccf256b0e23488e9f",
@@ -1098,7 +1178,7 @@
       "revision": "63c27d542974",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "11b32c33ab3f9e48f6",
@@ -1118,7 +1198,7 @@
       "revision": "68c7c77be727",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-22",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "4f1c0edfc7a8abfb8e",
@@ -1138,7 +1218,7 @@
       "revision": "1468edc7c08c",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "1353d4a74b4ae5a42f",
@@ -1158,7 +1238,7 @@
       "revision": "3bedab12b50a",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "299c63da64758992af",
@@ -1178,7 +1258,7 @@
       "revision": "97ede2d61fba",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "ff4a9ef67a2cf2fde8",
@@ -1198,107 +1278,7 @@
       "revision": "ad4762dbef18",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
-    },
-    {
-      "id": "e6f0ea4b4926690d51",
-      "title": "Specially Appointed Researcher (full-time)",
-      "institute": "The University of Osaka, Immunology Frontier Research Center",
-      "url": "https://academicjobsonline.org/ajo/jobs/33308",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Japan",
-      "city": "Suita, Osaka 5650871, Japan",
-      "department": "",
-      "topics": "Cancer Biology",
-      "summary": "Position Description [Advanced Postdoc Program of IFReC, The University of Osaka] The University of Osaka Immunology Frontier Research Center (IFReC) is recruiting post-doctoral researchers for its Advanced Postdoc Program. This program offers three-year employment to promising young researchers. Selected applicants have access to continually upgraded state-of-the-art facilitie",
-      "deadline": "2027-01-31",
-      "start": null,
-      "status": "candidate",
-      "revision": "8e47d30bcd46",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-20",
-      "last_seen": "2026-11-24"
-    },
-    {
-      "id": "4d00342da987feaadc",
-      "title": "Postdoctoral Position in Theoretical Particle Physics",
-      "institute": "Karlsruhe Institute of Technology, Institute for Theoretical Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33306",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Germany",
-      "city": "Karlsruhe, Baden-Wuerttemberg 76131, Germany",
-      "department": "",
-      "topics": "Particle Theory",
-      "summary": "Position Description Several postdoctoral positions in theoretical particle physics are expected to become available in autumn 2027 at the Institute for Theoretical Physics (ITP) at the Karlsruhe Institute of Technology (KIT), Germany. The initial appointment will be for a period of two years with the possibility of extension to a third year. Applicants should have experience i",
-      "deadline": "2027-01-07",
-      "start": null,
-      "status": "candidate",
-      "revision": "4f0f29e91b79",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
-    },
-    {
-      "id": "2a650234a29ead4b3e",
-      "title": "Post-doc position in theoretical high-energy physics",
-      "institute": "Weizmann Institute of Science, Particle Physics and Astrophysics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33305",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Israel",
-      "city": "Rehovot, HaMerkaz 7610001, Israel",
-      "department": "",
-      "topics": "High-Energy Theory",
-      "summary": "Position Description The high-energy theory group at the Weizmann Institute of Science invites applications for post-doctoral fellowships in the fields of quantum field theory, string theory and quantum chaos, starting in fall 2027. The faculty members in the group are Ofer Aharony and Micha Berkooz, who will be joined by Adar Sharon in fall 2027. We typically have also 2-3 pos",
-      "deadline": "2026-12-17",
-      "start": null,
-      "status": "candidate",
-      "revision": "b808d6d3bb9a",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
-    },
-    {
-      "id": "f66d576b4f4d679ea6",
-      "title": "Postdoctoral positions in the Nuclear Theory at C3NT/IOPP, CCNU in 2027",
-      "institute": "Central China Normal University, Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33304",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "China",
-      "city": "Wuhan, Hubei 430079, China",
-      "department": "",
-      "topics": "Nuclear Theory",
-      "summary": "Position Description There are several postdoctoral position openings in nuclear theory at Central China Center for Nuclear Theory (C3NT) and Institute of Particle Physics (IOPP) of Central China Normal University (CCNU), Wuhan, China. The research interests at C3NT and IOPP cover but are not restricted to (more information can be found in https://iopp.ccnu.edu.cn/en/ ): -- AdS",
-      "deadline": "2027-01-08",
-      "start": null,
-      "status": "candidate",
-      "revision": "1447ab787cc5",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
-    },
-    {
-      "id": "450139a6e7104eac4c",
-      "title": "Postdoctoral Position in Theoretical Astrophysics and Particle Phenomenology at City University of Hong Kong",
-      "institute": "City University of Hong Kong, Physics",
-      "url": "https://academicjobsonline.org/ajo/jobs/33303",
-      "source_name": "AcademicJobsOnline institutional postings",
-      "source_kind": "recruitment_board",
-      "country": "Hong Kong",
-      "city": "Kowloon, Hong Kong, Hong Kong",
-      "department": "",
-      "topics": "Physics",
-      "summary": "Position Description Postdoctoral Position in Theoretical Astrophysics and Particle Phenomenology at City University of Hong Kong We invite applications for a postdoctoral research position in the Department of Physics at City University of Hong Kong (CityUHK), working with Yiming Zhong . The position focuses on theoretical astrophysics and particle phenomenology, with an empha",
-      "deadline": "2026-12-31",
-      "start": null,
-      "status": "candidate",
-      "revision": "4ad45efc3428",
-      "first_seen": "2026-11-18",
-      "last_changed": "2026-11-23",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "7d8f8be58ef6ab9f83",
@@ -1318,7 +1298,7 @@
       "revision": "082b1ed0c487",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "e0f081cbe6947c1255",
@@ -1338,7 +1318,7 @@
       "revision": "29469f0a43ee",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "952d6b337413069d33",
@@ -1358,7 +1338,7 @@
       "revision": "bcc86aab5fff",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "941a92440756e2d982",
@@ -1378,7 +1358,7 @@
       "revision": "838840ab6bb2",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
-      "last_seen": "2026-11-24"
+      "last_seen": "2026-11-25"
     },
     {
       "id": "64d4c8595dbd5cd460",
@@ -1398,6 +1378,106 @@
       "revision": "e65f2f27459b",
       "first_seen": "2026-11-18",
       "last_changed": "2026-11-18",
+      "last_seen": "2026-11-25"
+    },
+    {
+      "id": "e6f0ea4b4926690d51",
+      "title": "Specially Appointed Researcher (full-time)",
+      "institute": "The University of Osaka, Immunology Frontier Research Center",
+      "url": "https://academicjobsonline.org/ajo/jobs/33308",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Japan",
+      "city": "Suita, Osaka 5650871, Japan",
+      "department": "",
+      "topics": "Cancer Biology",
+      "summary": "Position Description [Advanced Postdoc Program of IFReC, The University of Osaka] The University of Osaka Immunology Frontier Research Center (IFReC) is recruiting post-doctoral researchers for its Advanced Postdoc Program. This program offers three-year employment to promising young researchers. Selected applicants have access to continually upgraded state-of-the-art facilitie",
+      "deadline": "2027-01-31",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "8e47d30bcd46",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-20",
+      "last_seen": "2026-11-24"
+    },
+    {
+      "id": "4d00342da987feaadc",
+      "title": "Postdoctoral Position in Theoretical Particle Physics",
+      "institute": "Karlsruhe Institute of Technology, Institute for Theoretical Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33306",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Germany",
+      "city": "Karlsruhe, Baden-Wuerttemberg 76131, Germany",
+      "department": "",
+      "topics": "Particle Theory",
+      "summary": "Position Description Several postdoctoral positions in theoretical particle physics are expected to become available in autumn 2027 at the Institute for Theoretical Physics (ITP) at the Karlsruhe Institute of Technology (KIT), Germany. The initial appointment will be for a period of two years with the possibility of extension to a third year. Applicants should have experience i",
+      "deadline": "2027-01-07",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "4f0f29e91b79",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-24"
+    },
+    {
+      "id": "2a650234a29ead4b3e",
+      "title": "Post-doc position in theoretical high-energy physics",
+      "institute": "Weizmann Institute of Science, Particle Physics and Astrophysics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33305",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Israel",
+      "city": "Rehovot, HaMerkaz 7610001, Israel",
+      "department": "",
+      "topics": "High-Energy Theory",
+      "summary": "Position Description The high-energy theory group at the Weizmann Institute of Science invites applications for post-doctoral fellowships in the fields of quantum field theory, string theory and quantum chaos, starting in fall 2027. The faculty members in the group are Ofer Aharony and Micha Berkooz, who will be joined by Adar Sharon in fall 2027. We typically have also 2-3 pos",
+      "deadline": "2026-12-17",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "b808d6d3bb9a",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-24"
+    },
+    {
+      "id": "f66d576b4f4d679ea6",
+      "title": "Postdoctoral positions in the Nuclear Theory at C3NT/IOPP, CCNU in 2027",
+      "institute": "Central China Normal University, Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33304",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "China",
+      "city": "Wuhan, Hubei 430079, China",
+      "department": "",
+      "topics": "Nuclear Theory",
+      "summary": "Position Description There are several postdoctoral position openings in nuclear theory at Central China Center for Nuclear Theory (C3NT) and Institute of Particle Physics (IOPP) of Central China Normal University (CCNU), Wuhan, China. The research interests at C3NT and IOPP cover but are not restricted to (more information can be found in https://iopp.ccnu.edu.cn/en/ ): -- AdS",
+      "deadline": "2027-01-08",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "1447ab787cc5",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-18",
+      "last_seen": "2026-11-24"
+    },
+    {
+      "id": "450139a6e7104eac4c",
+      "title": "Postdoctoral Position in Theoretical Astrophysics and Particle Phenomenology at City University of Hong Kong",
+      "institute": "City University of Hong Kong, Physics",
+      "url": "https://academicjobsonline.org/ajo/jobs/33303",
+      "source_name": "AcademicJobsOnline institutional postings",
+      "source_kind": "recruitment_board",
+      "country": "Hong Kong",
+      "city": "Kowloon, Hong Kong, Hong Kong",
+      "department": "",
+      "topics": "Physics",
+      "summary": "Position Description Postdoctoral Position in Theoretical Astrophysics and Particle Phenomenology at City University of Hong Kong We invite applications for a postdoctoral research position in the Department of Physics at City University of Hong Kong (CityUHK), working with Yiming Zhong . The position focuses on theoretical astrophysics and particle phenomenology, with an empha",
+      "deadline": "2026-12-31",
+      "start": null,
+      "status": "not_seen_this_scan",
+      "revision": "4ad45efc3428",
+      "first_seen": "2026-11-18",
+      "last_changed": "2026-11-23",
       "last_seen": "2026-11-24"
     },
     {
@@ -1981,6 +2061,6 @@
       "last_seen": "2026-11-18"
     }
   ],
-  "candidate_count": 98,
+  "candidate_count": 102,
   "notes": "Discovery only. Follow each original posting to confirm dates, terms, eligibility and status."
 }
